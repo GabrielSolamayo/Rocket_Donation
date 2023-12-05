@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastroOrg.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Cadastro de Organização</title>
+    
+</head>
+<body>
+    
+  <iframe src="menurocketdonation/index.html"></iframe>
+    
+    <div class="content">
+       
+        <div id="sla">
+            <h1>Cadastrar Organização</h1>
+            <h1> <i class="ri-heart-add-line"></i></h1>
+            <h1>Bem vindo de volta!</h1>
+            <span>Se ja possuir uma conta, faça login.</span>
+            <button id="login-cad">Login</button>
+        </div>
+        <div id="outraDiv">
+            <!-- <h1>Cadastre-se</h1> -->
+            <form id="cadastrar-form">
+                  <div class="input-row">
+                    <label for="nomeOrg">Nome da Organização <i class="ri-heart-add-line"></i></label>
+                    <input type="text" id="nomeOrg" name="nomeOrg" placeholder="Digite o Nome da Organização" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="emailOrg">E-mail <i class="ri-mail-line"></i></p></label>
+                    <input type="email" id="emailOrg" name="emailOrg" placeholder="ex@.com" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="site">Site <i class="ri-earth-fill"></i></label>
+                    <input type="text" id="site" name="site" placeholder="ex: www.abc.com.br " required>
+                  </div>
+                  <div class="input-row">
+                    <label for="categoria">Escolha a Categoria</label>
+                    <select id="categoria" name="categoria">
+                      <option value="" disabled selected>Escolha uma opção</option>
+                      <option value="cultura">Cultura</option>
+                      <option value="racismo">Racismo</option>
+                      <!-- Adicione outras opções aqui -->
+                    </select>
+                  </div>
+                  
+                  <div class="input-row">
+                    <label for="cep">CEP <i class="ri-map-pin-line"></i></label>
+                    <input type="text" id="cep" name="cep" placeholder="CEP" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="rua">Endereço <i class="ri-home-4-line"></i></label>
+                    <input type="text" id="rua" name="rua" placeholder="Rua/AV" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="numero">Número <i class="ri-home-4-line"></i></label>
+                    <input class="campo" type="number" id="numero" name="numero" placeholder="N°" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="complemento">Complemento <i class="ri-home-4-line"></i></label>
+                    <input type="text" id="complemento" name="complemento" placeholder="Casa / Apartamento">
+                  </div>
+                  <div class="input-row">
+                    <label for="zona">Bairro <i class="ri-road-map-line"></i></label>
+                    <input type="text" id="zona" name="zona" placeholder="Bairro" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="agenciaConta">Agência Bancária <i class="ri-bank-line"></i></label>
+                    <input type="text" id="agenciaConta" name="agenciaConta"  placeholder="Digite a Agencia xxxx" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="numeroConta">Conta Bancária <i class="ri-bank-line"></i></label>
+                    <input type="text" id="numeroConta" name="numeroConta"  placeholder="Digite a Conta xxxx-xxx "required>
+                  </div>
+                  <div class="input-row">
+                    <label for="chavePix">Chave PIX <i class="ri-qr-code-line"></i></label>
+                    <input type="text" id="chavePix" name="chavePix"  placeholder="Chave PIX" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="telefone">Telefone <i class="ri-phone-line"></i></p></label>
+                    <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" required>
+                  </div>
+                  <div class="input-row">
+                    <label for="missao">Missão <i class="ri-chat-new-line"></i></label>
+                    <textarea id="missao" name="missao" required placeholder="Missão"></textarea>
+                  </div>
+                
+                  <button class="button-container">Cadastrar</button>
+                 
+            </form>
+        </div>
+
+    </div>
+    <script src="cadastrarOrg.js"></script>
+</body>
+</html>
