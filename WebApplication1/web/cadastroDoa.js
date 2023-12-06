@@ -68,10 +68,9 @@ form.addEventListener('submit', (event) => {
                 nome: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
                 cep: document.getElementById('cep').value,
-                rua: document.getElementById('rua').value,
+                rua: document.getElementById('endereco').value,
                 numero: document.getElementById('numero').value,
-                complemento: document.getElementById('complemento').value,
-                zona: document.getElementById('zona').value,          
+                complemento: document.getElementById('complemento').value,       
                 telefone: document.getElementById('telefone').value,
                
             };

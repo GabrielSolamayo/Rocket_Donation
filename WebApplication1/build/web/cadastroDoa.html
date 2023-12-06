@@ -26,6 +26,7 @@
     <div id="outraDiv">
         
         <form id="cadastrar-form" method="POST" action="Controller">
+            <input type="hidden" name="flag" value="cadastrar">
 
 
              <div class="input-row">
@@ -43,8 +44,6 @@
               <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" required>
           </div>
 
-            
-
             <div class="input-row">
                 <label for="numero"> <p>Número <i class="ri-home-4-line"></i></p></label>
                 <input type="text" id="numero" name="numero" placeholder="N°" required>
@@ -52,48 +51,34 @@
 
             <div class="input-row">
                 <label for="rua"> <p>Endereço <i class="ri-home-4-line"></i> </p></label>
-                <input type="text" id="Endereço" name="Endereço" placeholder="Rua / Avenida" required>
+                <input type="text" id="endereco" name="endereco" placeholder="Rua / Avenida" required>
             </div>
 
             <div class="input-row">
               <label for="cep"><p>CEP <i class="ri-map-pin-line"></i></p></label>
               <input type="text" id="cep" name="cep" placeholder="CEP" required>
-          </div>
-
-            <div class="input-row">
-              <label for="zona"><p>Bairro <i class="ri-road-map-line"></i></p></label>
-              <input type="text" id="Bairro" name="Bairro" placeholder="Bairro" required>
-          </div>
-
-          <div class="input-row">
-            <label for="rua"><p>Complemento <i class="ri-home-4-line"></i></p> </label>
-            <input type="text" id="Complemento" name="Complemento" placeholder="Casa/Apartamento" required>
-          </div>
-
-
-          
-            <div class="input-row">
-                
-                <label for="senha"> <p> Senha <i class="ri-lock-password-line"></i></p></label>
-                
-                <input class="campo" type="password" id="senha" name="senha" placeholder="Senha "required>
-            
             </div>
-
+            <div class="input-row">
+                <label for="senha"> <p> Senha <i class="ri-lock-password-line"></i></p></label>
+                <input class="campo" type="password" id="senha" name="senha" placeholder="Senha "required>
+            </div>
+            <div class="input-row">
+                <label for="rua"><p>Complemento <i class="ri-home-4-line"></i></p> </label>
+                <input type="text" id="complemento" name="complemento" placeholder="Casa/Apartamento" required>
+              </div>
             <div class="input-row">
                 <label for="confirmarSenha"><p> Confirme <i class="ri-pass-valid-line"></i></p></label>
                 <input class="campo" type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha" required>
             </div>
 
            
-               <button class="button-container">Cadastrar</button>
+            <input type="submit" class="button-container" value="Cadastrar"> 
+            <input type="submit" class="button-container" value="Entrar">
             
 
         </form>
     </div>
 
 </div>
-
-<script src="cadastroDoa.js"></script>
 </body>
 </html>
