@@ -45,8 +45,8 @@ public class Controller extends HttpServlet {
             doador.setUserType("Doador");
             senha = request.getParameter("senha");
             senhaV = request.getParameter("confirmarSenha");
-            if (senha == senhaV) {
-                boolean resp = dao.verificarCadastroDoador(doador);
+            if (senha.equals(senhaV)) { //Verifica se as senhas sao iguais ou nao;
+                boolean resp = dao.verificarCadastroDoador(doador, doador.getEmail());
                 if (resp) { //Se o doador for cadastrado com sucesso;
                     Acesso acesso = new Acesso();
                     acesso.setEmail(doador.getEmail());

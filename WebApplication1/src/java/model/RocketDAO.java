@@ -37,9 +37,15 @@ public class RocketDAO {
         }
     }
     //Metodo para verificar se cadastro de doador funcionaria;
-    public boolean verificarCadastroDoador(Doador doador) {
+    public boolean verificarCadastroDoador(Doador doador, String email) {
         connect();
         try {
+            Query q = manager.createNamedQuery("Doador.findByEmail", Doador.class);
+            q.setParameter("email", email);
+            List<Doador> resultados = q.getResultList();
+            if(!resultados.isEmpty()){
+                return false;
+            }
             manager.getTransaction().begin();
             manager.persist(doador);
             // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
