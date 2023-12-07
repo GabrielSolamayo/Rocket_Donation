@@ -38,18 +38,18 @@ public class RocketDAO {
     }
     //Metodo para verificar se cadastro de doador funcionaria;
     public boolean verificarCadastroDoador(Doador doador) {
-    connect();
-    try {
-        manager.getTransaction().begin();
-        manager.persist(doador);
-        // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
-        manager.getTransaction().rollback();
-        return true;
-    } catch (Exception e) {
-        // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
-        return false;
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(doador);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().rollback();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
     }
-}
     //Metodo para cadastrar um acesso, na tabela acesso do BD, passando um object 'acesso' como parametro;
     public void cadastroAcesso(Acesso acesso) {
         connect();
@@ -87,16 +87,29 @@ public class RocketDAO {
     }
     //Metodo para verificar se cadastro de endereco funcionaria;
     public boolean verificarCadastroEndereco(Endereco endereco) {
-    connect();
-    try {
-        manager.getTransaction().begin();
-        manager.persist(endereco);
-        // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
-        manager.getTransaction().rollback();
-        return true;
-    } catch (Exception e) {
-        // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
-        return false;
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(endereco);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().rollback();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
+    }   
+    
+    public Acesso validarLogin(String u, String s) {
+        connect();
+        try {
+            TypedQuery<Acesso> q = manager.createNamedQuery("Acesso.findByEmailSenha", Acesso.class);//Query tirado da classe "Acesso",query para pegar usuario e senha;
+            q.setParameter("email", u);
+            q.setParameter("senha", s);
+            Acesso acesso = q.getSingleResult();
+            return acesso;
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
-}
 }

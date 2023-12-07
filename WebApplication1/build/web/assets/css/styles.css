@@ -478,6 +478,7 @@ header img {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: #ffffff;
 }
 
 .button:hover {
@@ -491,203 +492,151 @@ header img {
   font-size: 17px;
   font-weight: 800;
   word-wrap: break-word;
-  color: #dddcdc;
+}
+.title_Org{
+  color: #df1b0d;
+  text-align: center;
+  margin-top: 7%;
+  font-size: 60px;
+
+}
+.title_not{
+  
+  color: #4f8aa1;
+  text-align: start;
+  margin-top: 8%;
+  font-size: 60px;
+
 }
 
 .slider-container {
+  height: 100vh;
   width: 80%;
-  height: 100%;
   margin: 0 auto;
-  padding-top: 200px;
-  padding-bottom: 100px;
+  margin-top: 5%;
   overflow: hidden;
-  position: static;
+  
 }
 
-.slider-container h1{
-  color: #df221c;
-  font-size: 60px;
-}
 .slider {
   display: flex;
   transition: transform 0.5s;
 }
 
 .card__institute {
-  width: 500px;
   height: 500px;
+  width: 300px;
   margin: 0 10px;
-  border: 2px solid #df1c87;
+  border: 2px solid #6d7fa5;
   border-radius: 10px;
   padding: 10px;
-  margin-top: 5px;
   text-align: center;
-  background-color: rgb(255, 255, 255);
-
+  background-color: #e90c0c94;
+  margin-top: 10px;
 }
-
+.card__news {
+  height: 500px;
+  width: 300px;
+  margin: 0 10px;
+  border: 2px solid #e90c0c94;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #6d7fa5;
+  margin-top: 10px;
+}
+.card__news img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
 .card__institute img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
 }
+.card__news h2 {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.card__news p {
+  font-size: 14px;
+  color: #eeeeee;
+}
 
 .card__institute h2 {
   font-size: 18px;
-  color: #3d3c3c;
+  color: #f3f3f3;
 }
 
 .card__institute p {
   font-size: 14px;
-  color: #3d3c3c;
+  color: #e4e4e4;
 }
-
 .button__card {
-
+  
   height: 50px;
   width: 75px;
-  border: 2px solid rgb(223, 5, 139);
-  border-radius: 20px;
-  cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
   background-color: transparent;
-  font-size: 20px;
-  text-align: center;
-
+  cursor: pointer;
+  text-align: center; 
 }
-.button__card p{
+.button__card a{
+  color: #fff;
   font-size: 20px;
-  color: #fa0bc6;
+  text-decoration: none;
 }
-
-.button__card:hover {
-  background-color: rgb(133, 132, 132);
-  color: rgb(251, 127, 255);
+.button__card:hover{
+  background-color: rgb(212, 18, 212);
   transition: all 1s ease;
-
 }
 
-.slider-buttons {
+.slider-buttons{
   flex: 0 0 300px;
   margin: 0 10px;
   padding-top: 5%;
-
-
+ 
+  
 }
-
-.prev-button {
+.prev-button{
   height: 50px;
   width: 50px;
-  cursor: pointer;
-  border: 2px solid rgb(22, 41, 77);
+  border: 2px solid #d309097a;
   border-radius: 20px;
   background-color: transparent;
-
+  color: rgb(223, 114, 114);
+  font-size: 20px;
+  cursor: pointer;
+ 
 
 
 }
+.next-button{
+  height: 50px;
+  width: 50px;
+  border: 2px solid #0906a07e;
+  border-radius: 20px;
+  background-color: transparent;
+  color: rgb(140, 132, 209);
+  font-size: 20px;
+  cursor: pointer;
 
+}
 .prev-button:hover {
-  background-color: rgb(173, 33, 33);
-  color: rgb(255, 253, 127);
+  background-color: rgb(140, 132, 209);
+  color: rgb(255, 255, 255);
   transition: all 1s ease;
-
-}
-
-.next-button {
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-  border: 2px solid rgb(22, 41, 77);
-  border-radius: 20px;
-  background-color: transparent;
-
 }
 
 .next-button:hover {
-  background-color: rgb(173, 33, 33);
-  color: rgb(255, 253, 127);
-  transition: all 1s ease;
-
-}
-
-.noticias {
-  padding-top: 150px;
-
-}
-.noticias h1{
-  color: rgb(24, 18, 105);
-  font-size: 60px;
-  padding-left: 200px;
-  
-}
-
-.noticie {
-  height: 100vh;
-  padding-left: 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-}
-
-.card_notice {
-  background-color: #fff;
-  border: 2px solid rgb(22, 41, 77);
-  width: 320px;
-  height: 500px;
-  margin: 10px;
-  border-radius: 15px;
-
-}
-
-.notice_img {
-  background-color: aqua;
-  height: 150px;
-  margin-bottom: 15px;
-  background-size: cover;
-  border-radius: 15px 15px 0 0;
-}
-
-.notice_1 {
-  background-image: url('doação.jpg')
-}
-
-.notice_2 {
-  background-image: url('doação.jpg');
-}
-
-.notice_3 {
-  background-image: url('doação.jpg');
-}
-
-.card_notice p {
-  padding: 0px;
-}
-
-.card_notice a {
-  background-color: transparent;
-  border: 2px solid rgb(22, 41, 77);
-  color: rgb(12, 9, 9);
-  padding: 5px 20px;
-  display: block;
-  text-align: center;
-  margin: 20px 50px;
-  border-radius: 30px;
-
-}
-
-.card_notice:hover {
-  background-color: rgb(124, 115, 115);
-  color: aquamarine;
-  cursor: pointer;
+  background-color: rgb(223, 114, 114);
+  color: rgb(255, 255, 255);
   transition: all 1s ease;
 }
 
-.card_notice a:hover {
-  background-color: rgb(33, 140, 173);
-  color: rgb(127, 255, 212);
-  transition: all 1s ease;
-}
 .fundo_sobre{
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-image: url(fundo_sobre.png);
@@ -724,4 +673,49 @@ header img {
   height: auto;
   /* Isso manterá a proporção original da imagem */
 
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.rodape-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.informacoes,
+.links-rapidos,
+.redes-sociais {
+  flex: 1;
+  margin: 0 20px;
+}
+
+h3 {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+}
+
+p, ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.direitos {
+  text-align: center;
+  margin-top: 20px;
+}
+.direitos img{
+  margin-top: 20px;
+  width: 200px;
+  /* ajuste o valor conforme necessário */
+  height: auto;
 }

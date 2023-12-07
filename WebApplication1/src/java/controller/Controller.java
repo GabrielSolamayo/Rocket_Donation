@@ -29,13 +29,13 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String flag, mensagem = "";
-        
+
         RocketDAO dao = new RocketDAO(); //Importa a classe RocketDAO para utilizarmos as funções daquela classe;
         flag = request.getParameter("flag");
         HttpSession session = null;
-        
-        if(flag.equalsIgnoreCase("cadastrar")){
-            
+
+        if (flag.equalsIgnoreCase("cadastrarDoador")) {//IF PARA O CADASTRO DO DOADOR;
+            String senha, senhaV;
             Doador doador = new Doador();
             Endereco endereco = new Endereco();
 
@@ -43,47 +43,74 @@ public class Controller extends HttpServlet {
             doador.setEmail(request.getParameter("email"));
             doador.setTelefone(request.getParameter("telefone"));
             doador.setUserType("Doador");
-            boolean resp = dao.verificarCadastroDoador(doador);
-            if(resp){ //Se o doador for cadastrado com sucesso;
-                Acesso acesso = new Acesso();
-                acesso.setEmail(doador.getEmail());
-                acesso.setSenha(request.getParameter("senha"));
-                resp = dao.verificarCadastroAcesso(acesso);
-                if(resp){ //Se o acesso for cadastrado com sucesso;
-                    int num = Integer.parseInt(request.getParameter("numero"));//Convertendo para int o 'text' do formulario;
-                    endereco.setCep(request.getParameter("cep"));
-                    endereco.setNumero(num);
-                    endereco.setRua(request.getParameter("endereco"));
-                    endereco.setComplemento(request.getParameter("complemento"));
-                    endereco.setFkEmail(doador);
-                    resp = dao.verificarCadastroEndereco(endereco);
-                    if(resp){
-                        dao.cadastroDoador(doador);
-                        dao.cadastroAcesso(acesso);
-                        dao.cadastroEndereco(endereco);
-                    }else{
-                        mensagem = "Endereco nao efetutado";
+            senha = request.getParameter("senha");
+            senhaV = request.getParameter("confirmarSenha");
+            if (senha == senhaV) {
+                boolean resp = dao.verificarCadastroDoador(doador);
+                if (resp) { //Se o doador for cadastrado com sucesso;
+                    Acesso acesso = new Acesso();
+                    acesso.setEmail(doador.getEmail());
+                    acesso.setSenha(request.getParameter("senha"));
+                    resp = dao.verificarCadastroAcesso(acesso);
+                    if (resp) { //Se o acesso for cadastrado com sucesso;
+                        int num = Integer.parseInt(request.getParameter("numero"));//Convertendo para int o 'text' do formulario;
+                        endereco.setCep(request.getParameter("cep"));
+                        endereco.setNumero(num);
+                        endereco.setRua(request.getParameter("endereco"));
+                        endereco.setComplemento(request.getParameter("complemento"));
+                        endereco.setFkEmail(doador);
+                        resp = dao.verificarCadastroEndereco(endereco);
+                        if (resp) {
+                            dao.cadastroDoador(doador);
+                            dao.cadastroAcesso(acesso);
+                            dao.cadastroEndereco(endereco);
+                            RequestDispatcher disp = request.getRequestDispatcher("index.html");
+                            disp.forward(request, response);
+                        } else {
+                            mensagem = "Endereco nao efetutado";
+                        }
+                    } else {
+                        mensagem = "Acesso nao efetuado";
                     }
-                }else{
-                    mensagem = "Acesso nao efetuado";
+                } else {
+                    mensagem = "Email ja registrado";
+                    request.setAttribute("m", mensagem);
+                    RequestDispatcher disp = request.getRequestDispatcher("cadastroDoErro.jsp");
+                    disp.forward(request, response);
                 }
             }else {
-                mensagem = "Cadastro Doador nao efetuado.";
+                mensagem = "Senha estão diferentes";
+                request.setAttribute("m", mensagem);
+                RequestDispatcher disp = request.getRequestDispatcher("cadastroDoErro.jsp");
+                disp.forward(request, response);
             }
-            
-            
-            
-            
-            
-            if(resp){
-                mensagem = "Cadastro de Endereco feito com sucesso";
-            }
+
             request.setAttribute("m", mensagem);
-            RequestDispatcher disp = request.getRequestDispatcher("index.html");
-            disp.forward(request, response);
+
+        } else if (flag.equalsIgnoreCase("login")) {// IF PARA O LOGIN DO DOADOR OU ORGANIZACAO;
+            String user, password;
+            user = request.getParameter("email");
+            password = request.getParameter("senha");
+            Acesso acesso = new RocketDAO().validarLogin(user, password);
+            if (acesso == null) {
+                //Usuario nao encontrado, cadastre-se;
+            } else {
+                String nome, email, type;
+                nome = acesso.getDoador().getNome();
+                email = acesso.getDoador().getEmail();
+                type = acesso.getDoador().getUserType();
+                session = request.getSession();
+                session.setAttribute("email", email);
+                if (type == "Doador") {
+                    RequestDispatcher disp = request.getRequestDispatcher("telaDoador.html");
+                    disp.forward(request, response);
+                } else if (type == "Organizacao") {
+                    RequestDispatcher disp = request.getRequestDispatcher("telaOrganizacao.html");
+                    disp.forward(request, response);
+                }
+            }
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -20,13 +20,15 @@
         <h1><i class="ri-user-add-line"></i></h1>
         <h1>Bem vindo de volta!</h1>
         <span>Se já possuir uma conta, faça login.</span>
-        <button id="login-cad">Login</button>
+        <button id="login-cad">
+            <a href="login.html" style="color: white; text-decoration: none;">Login</a>
+        </button>
     </div>
 
     <div id="outraDiv">
         
         <form id="cadastrar-form" method="POST" action="Controller">
-            <input type="hidden" name="flag" value="cadastrar">
+            <input type="hidden" name="flag" value="cadastrarDoador">
 
 
              <div class="input-row">
@@ -73,7 +75,6 @@
 
            
             <input type="submit" class="button-container" value="Cadastrar"> 
-            <input type="submit" class="button-container" value="Entrar">
             
 
         </form>
