@@ -12,4 +12,9 @@ const showMenu = (toggleId, navId) =>{
    })
 }
 
+
 showMenu('nav-toggle','nav-menu')
+
+function redirectToHome() {
+    window.location.href = "../index.html";
+  }

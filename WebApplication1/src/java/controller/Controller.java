@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Acesso;
+import model.ContaBancaria;
 import model.Doador;
 import model.Endereco;
+import model.Organizacao;
 import model.RocketDAO;
 
 /**
@@ -102,13 +104,18 @@ public class Controller extends HttpServlet {
                 session = request.getSession();
                 session.setAttribute("email", email);
                 if (type == "Doador") {
-                    RequestDispatcher disp = request.getRequestDispatcher("telaDoador.html");
+                    RequestDispatcher disp = request.getRequestDispatcher("index.html");
                     disp.forward(request, response);
                 } else if (type == "Organizacao") {
                     RequestDispatcher disp = request.getRequestDispatcher("telaOrganizacao.html");
                     disp.forward(request, response);
                 }
             }
+        } else if(flag.equalsIgnoreCase("cadastrarOrg")){ // IF PARA CADASTRO DE ORGANIZAÇÃO
+            Doador doador = new Doador();
+            Organizacao org = new Organizacao();
+            Endereco endereco = new Endereco();
+            ContaBancaria bancario = new ContaBancaria();
         }
 
     }
