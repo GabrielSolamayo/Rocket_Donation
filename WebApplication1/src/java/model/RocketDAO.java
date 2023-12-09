@@ -106,6 +106,7 @@ public class RocketDAO {
         }
     }   
     
+    //Metodo para validar o login, tanto de daodor quanto de otganizacao;
     public Acesso validarLogin(String u, String s) {
         connect();
         try {
@@ -118,4 +119,55 @@ public class RocketDAO {
             return null;
         }
     }
+    
+    //Metodo para cadastrar na tabela Organizacao;
+    public void cadastroOrg(Organizacao org) {
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(org);
+            manager.getTransaction().commit();
+        } catch (NoResultException e) {
+        }
+    }
+    //Metodo para verificar se o cadastro de Organizacao funcionaria;
+    public boolean verificarCadastroOrg(Organizacao org){
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(org);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().rollback();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
+    }
+    
+    //Metodo para cadastrar na tabela ContaBancaria;
+    public void cadastroContaBancaria(ContaBancaria bancario) {
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(bancario);
+            manager.getTransaction().commit();
+        } catch (NoResultException e) {
+        }
+    }
+    //Metodo para verificar se o cadastro de Contabancaria funcionaria;
+    public boolean verificarCadastroBanco(ContaBancaria bancario){
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(bancario);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().rollback();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
+    }
+    
 }
