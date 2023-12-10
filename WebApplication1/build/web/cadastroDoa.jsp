@@ -68,7 +68,7 @@
                     <label for="rua">
                         <p>Endereço <i class="ri-home-4-line"></i> </p>
                     </label>
-                    <input type="text" id="Endereco" name="Endereço" placeholder="Rua / Avenida" required>
+                    <input type="text" id="Endereco" name="endereco" placeholder="Rua / Avenida" required>
                 </div>
 
                 <div class="input-row">
@@ -88,7 +88,7 @@
                     <label for="rua">
                         <p>Complemento <i class="ri-home-4-line"></i></p>
                     </label>
-                    <input type="text" id="Complemento" name="Complemento" placeholder="Casa/Apartamento" required>
+                    <input type="text" id="Complemento" name="complemento" placeholder="Casa/Apartamento" required>
                 </div>
 
                 <div class="input-row">

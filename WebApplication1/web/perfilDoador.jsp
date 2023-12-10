@@ -16,6 +16,6 @@
         <header style="padding-top: 100px">
         <%@ include file="menuLogado.jsp" %>
         </header>
-        <h1>Perfil Doador</h1>
+        
     </body>
 </html>

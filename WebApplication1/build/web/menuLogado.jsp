@@ -56,12 +56,12 @@
                     <!--=============== NAV MENU ===============-->
                     <div class="nav__menu" id="nav-menu">
                         <ul class="nav__list">
-                            <li><a  href="./index.jsp#Home" class="nav__link"><i class="ri-home-2-line"></i>Home</a></li>
+                            <li><a  href="./indexLogado.jsp#Home" class="nav__link"><i class="ri-home-2-line"></i>Home</a></li>
 
-                            <li><a href="./index.jsp#Organização" class="nav__link"><i class="ri-home-heart-line"></i>Organizações</a></li>
+                            <li><a href="./indexLogado.jsp#Organização" class="nav__link"><i class="ri-home-heart-line"></i>Organizações</a></li>
 
 
-                            <li><a href="./index.jsp#Noticia" class="nav__link"><i class="ri-slideshow-line"></i>Noticias</a></li>
+                            <li><a href="./indexLogado.jsp#Noticia" class="nav__link"><i class="ri-slideshow-line"></i>Noticias</a></li>
 
                             <!--=============== DROPDOWN 1 ===============-->
 
@@ -91,7 +91,7 @@
                             </ul>
                             </li>
 
-                            <li><a href="index.jsp#Sobre" class="nav__link"><i class="ri-heart-add-line"></i>Sobre</a></li>
+                            <li><a href="./indexLogado.jsp#Sobre" class="nav__link"><i class="ri-heart-add-line"></i>Sobre</a></li>
 
                             <!--=============== DROPDOWN 2 ===============-->
                             <li class="dropdown__item">
@@ -104,13 +104,13 @@
 
 
                                     <li>
-                                        <a href="perfilDoador.jsp" class="dropdown__link">
+                                        <a href="perfilLogado.jsp" class="dropdown__link">
                                             <i class="ri-user-heart-line"></i> Perfil
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a href="cadastroOrg.jsp" class="dropdown__link">
+                                        <a href="controle?flag=logout" class="dropdown__link">
                                             <i class="ri-home-heart-line"></i> Sair
                                         </a>
                                     </li>

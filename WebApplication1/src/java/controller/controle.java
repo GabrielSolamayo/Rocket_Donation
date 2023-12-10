@@ -59,6 +59,7 @@ public class controle extends HttpServlet {
                     Acesso acesso = new Acesso();
                     acesso.setEmail(doador.getEmail());
                     acesso.setSenha(request.getParameter("senha"));
+                    acesso.setDoador(doador);
                     resp = dao.verificarCadastroAcesso(acesso);
                     if (resp) { //Se o acesso for cadastrado com sucesso;
                         int num = Integer.parseInt(request.getParameter("numero"));//Convertendo para int o 'text' do formulario;
@@ -69,15 +70,17 @@ public class controle extends HttpServlet {
                         endereco.setFkEmail(doador);
                         resp = dao.verificarCadastroEndereco(endereco);
                         if (resp) {
-                            String email, nome;
+                            String email, nome, type;
                             dao.cadastroDoador(doador);
                             dao.cadastroAcesso(acesso);
                             dao.cadastroEndereco(endereco);
                             email = acesso.getDoador().getEmail();
                             nome = acesso.getDoador().getNome();
+                            type = acesso.getDoador().getUserType();
                             session = request.getSession();
                             session.setAttribute("emailUsuario", email);
                             session.setAttribute("nomeUsuario", nome);
+                            session.setAttribute("typeUsuario", type);
                             RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
                             disp.forward(request, response);
                         } else {
@@ -117,14 +120,9 @@ public class controle extends HttpServlet {
                 session = request.getSession();
                 session.setAttribute("emailUsuario", email);
                 session.setAttribute("nomeUsuario", nome);
-                if (type.equals("Doador")) {
-                    RequestDispatcher disp = request.getRequestDispatcher("indexDoador.jsp");
-                    disp.forward(request, response);
-                } else if (type.equals("Instituicao")) {
-                    request.setAttribute("mens", mensagem);
-                    RequestDispatcher disp = request.getRequestDispatcher("indexOrg.jsp");
-                    disp.forward(request, response);
-                }
+                session.setAttribute("typeUsuario", type);
+                RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
+                disp.forward(request, response);
             }
         } else if(flag.equalsIgnoreCase("cadastroOrg")){ //IF PARA CADASTRO DE ORGANIZAÇÃO
             String senha, senhaV;
@@ -145,6 +143,7 @@ public class controle extends HttpServlet {
                 if(resp){ //Verifica se o cadastro de doador (user) seria bem sucessido;
                     acesso.setEmail(doadOR.getEmail());
                     acesso.setSenha(request.getParameter("senha"));
+                    acesso.setDoador(doadOR);
                     resp = dao.verificarCadastroAcesso(acesso);
                     if(resp){ //Verifica sei o cadastro de acesso seria bem sucessido;
                         endereco.setCep(request.getParameter("cep"));
@@ -172,13 +171,23 @@ public class controle extends HttpServlet {
                                 bancario.setFkEmail(org);
                                 bancario.setCodBanco(request.getParameter("codBanco"));
                                 resp = dao.verificarCadastroBanco(bancario);
-                                if(resp){ //Verifica se o cadstro de contaBancria seria bem sucessido
+                                if(resp){ //Verifica se o cadastro de contaBancria seria bem sucessido
+                                    String nome, email, type;
+                                    
                                     dao.cadastroDoador(doadOR);
                                     dao.cadastroAcesso(acesso);
                                     dao.cadastroEndereco(endereco);
                                     dao.cadastroOrg(org);
                                     dao.cadastroContaBancaria(bancario);
-                                    RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
+                                    
+                                    nome = acesso.getDoador().getNome();
+                                    email = acesso.getDoador().getEmail();
+                                    type = acesso.getDoador().getUserType();
+                                    session = request.getSession();
+                                    session.setAttribute("emailUsuario", email);
+                                    session.setAttribute("nomeUsuario", nome);
+                                    session.setAttribute("typeUsuario", type);
+                                    RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
                                     disp.forward(request, response);
                                 }
                             }
@@ -196,6 +205,12 @@ public class controle extends HttpServlet {
                 RequestDispatcher disp = request.getRequestDispatcher("cadastroOrgERRO.jsp");
                 disp.forward(request, response);
             }
+        } else if(flag.equalsIgnoreCase("logout")){ //usuario desejou sair da conta;
+            session = request.getSession(false);
+            if (session != null) {
+                session.invalidate(); // Invalida a sessão existente
+            }
+            response.sendRedirect("index.jsp");
         }
     }
 
