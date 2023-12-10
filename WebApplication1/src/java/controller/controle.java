@@ -76,9 +76,8 @@ public class controle extends HttpServlet {
                             email = acesso.getDoador().getEmail();
                             nome = acesso.getDoador().getNome();
                             session = request.getSession();
-                            session.setAttribute("email", email);
-                            mensagem = "Bem vindo " + nome;
-                            request.setAttribute("m", mensagem);
+                            session.setAttribute("emailUsuario", email);
+                            session.setAttribute("nomeUsuario", nome);
                             RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
                             disp.forward(request, response);
                         } else {
@@ -116,10 +115,9 @@ public class controle extends HttpServlet {
                 email = acesso.getDoador().getEmail();
                 type = acesso.getDoador().getUserType();
                 session = request.getSession();
-                session.setAttribute("email", email);
-                mensagem = "Bem vindo " + nome;
+                session.setAttribute("emailUsuario", email);
+                session.setAttribute("nomeUsuario", nome);
                 if (type.equals("Doador")) {
-                    request.setAttribute("m", mensagem);
                     RequestDispatcher disp = request.getRequestDispatcher("indexDoador.jsp");
                     disp.forward(request, response);
                 } else if (type.equals("Instituicao")) {
@@ -172,7 +170,7 @@ public class controle extends HttpServlet {
                                 bancario.setChavePix(request.getParameter("chavePix"));
                                 bancario.setNumeroConta(request.getParameter("numeroConta"));
                                 bancario.setFkEmail(org);
-                                bancario.setCodBanco(senhaV);
+                                bancario.setCodBanco(request.getParameter("numeroConta"));
                                 resp = dao.verificarCadastroBanco(bancario);
                                 if(resp){ //Verifica se o cadstro de contaBancria seria bem sucessido
                                     dao.cadastroDoador(doador);

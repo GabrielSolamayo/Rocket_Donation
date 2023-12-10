@@ -97,6 +97,10 @@
           <input type="text" id="numero" name="numero" placeholder="N" required>
         </div>
         <div class="input-row">
+          <label for="numeroConta">Codigo do Banco <i class="ri-bank-line"></i></label>
+          <input type="text" id="numeroConta" name="numeroConta" placeholder="Cod " required>
+        </div>
+        <div class="input-row">
           <label for="missao">Missão da Organização <i class="ri-home-heart-line"></i></label>
           <textarea id="missao" name="missao" required></textarea>
         </div>
@@ -104,12 +108,9 @@
           <label for="complemento">Complemento <i class="ri-home-4-line"></i> </label>
           <input type="text" id="complemento" name="complemento" placeholder="Casa/Predio">
         </div>
-
-
-
-
+        <button class="button-container" type="submit">Cadastrar</button>
         <div>
-          <button class="button-container" type="submit">Cadastrar</button>
+
       </form>
 
 

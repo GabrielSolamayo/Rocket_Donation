@@ -5,10 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    // Recupera as informações do usuário da sessão, se a sessão existir
+    HttpSession existingSession = request.getSession(false);
+    if (existingSession != null) {
+        String nomeUsuario = (String) existingSession.getAttribute("nomeUsuario");
+        String emailUsuario = (String) existingSession.getAttribute("emailUsuario");
+%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-    
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,9 +31,11 @@
     </head>
 
     <body>
+        
         <!--=============== HEADER ===============-->
         <section id="home">
             <header class="header">
+                
 
                 <nav class="nav container">
                     <div class="nav__data">
@@ -87,7 +96,7 @@
                             <!--=============== DROPDOWN 2 ===============-->
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <i class="ri-login-circle-line"></i>${m} <i
+                                    <i class="ri-login-circle-line"></i>Bem vindo, <%= nomeUsuario %><i
                                         class="ri-arrow-down-s-line dropdown__arrow"></i>
                                 </div>
 
@@ -118,3 +127,9 @@
     </body>
 
 </html>
+<%
+    } else {
+        // Se a sessão não existir, redirecione o usuário para a página de login
+        response.sendRedirect("paginaDeLogin.jsp");
+    }
+%>
