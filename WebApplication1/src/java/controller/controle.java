@@ -128,31 +128,31 @@ public class controle extends HttpServlet {
             }
         } else if(flag.equalsIgnoreCase("cadastroOrg")){ //IF PARA CADASTRO DE ORGANIZAÇÃO
             String senha, senhaV;
-            Doador doador = new Doador();
+            Doador doadOR = new Doador();
             Acesso acesso = new Acesso();
             Organizacao org = new Organizacao();
             Endereco endereco = new Endereco();
             ContaBancaria bancario = new ContaBancaria();
             
-            doador.setEmail(request.getParameter("emailOrg"));
-            doador.setNome(request.getParameter("nomeOrg"));
-            doador.setTelefone(request.getParameter("telefone"));
-            doador.setUserType("Instituicao");
+            doadOR.setEmail(request.getParameter("emailOrg"));
+            doadOR.setNome(request.getParameter("nomeOrg"));
+            doadOR.setTelefone(request.getParameter("telefone"));
+            doadOR.setUserType("Instituicao");
             senha = request.getParameter("senha");
             senhaV = request.getParameter("confirmarSenha");
             if(senha.equals(senhaV)){//Verificar se as senhas sao iguais para prosseguir;
-                boolean resp = dao.verificarCadastroDoador(doador, doador.getEmail()); //Utiliza o mesmo método de chegar doador para verificar o cadastro de Doador (user) e o email;
+                boolean resp = dao.verificarCadastroDoador(doadOR, doadOR.getEmail()); //Utiliza o mesmo método de chegar doador para verificar o cadastro de Doador (user) e o email;
                 if(resp){ //Verifica se o cadastro de doador (user) seria bem sucessido;
-                    acesso.setEmail(doador.getEmail());
+                    acesso.setEmail(doadOR.getEmail());
                     acesso.setSenha(request.getParameter("senha"));
                     resp = dao.verificarCadastroAcesso(acesso);
-                    if(resp){ //Verifica sei o cadtro de acesso seria bem sucessido;
+                    if(resp){ //Verifica sei o cadastro de acesso seria bem sucessido;
                         endereco.setCep(request.getParameter("cep"));
                         endereco.setRua(request.getParameter("rua"));
                         endereco.setComplemento(request.getParameter("complemento"));
                         int num = Integer.parseInt(request.getParameter("numero"));
                         endereco.setNumero(num);
-                        endereco.setFkEmail(doador);
+                        endereco.setFkEmail(doadOR);
                         resp = dao.verificarCadastroEndereco(endereco);
                         if(resp){ //Verifica se o cadastro de endereco seria bem sucessido;
                             org.setCategoria(request.getParameter("categoria"));
@@ -163,17 +163,17 @@ public class controle extends HttpServlet {
                                 String dataFormatada = formato.format(dataAtual);
                                 Date dataConvertida = formato.parse(dataFormatada);
                             org.setDataCadastro(dataConvertida);
-                            org.setUsuarioEmail(doador.getEmail());
+                            org.setUsuarioEmail(doadOR.getEmail());
                             resp = dao.verificarCadastroOrg(org);
                             if(resp){ //Verifica se o cadastro de organizacao seria bem sucessido;
                                 bancario.setAgenciaConta(request.getParameter("agenciaConta"));
                                 bancario.setChavePix(request.getParameter("chavePix"));
                                 bancario.setNumeroConta(request.getParameter("numeroConta"));
                                 bancario.setFkEmail(org);
-                                bancario.setCodBanco(request.getParameter("numeroConta"));
+                                bancario.setCodBanco(request.getParameter("codBanco"));
                                 resp = dao.verificarCadastroBanco(bancario);
                                 if(resp){ //Verifica se o cadstro de contaBancria seria bem sucessido
-                                    dao.cadastroDoador(doador);
+                                    dao.cadastroDoador(doadOR);
                                     dao.cadastroAcesso(acesso);
                                     dao.cadastroEndereco(endereco);
                                     dao.cadastroOrg(org);

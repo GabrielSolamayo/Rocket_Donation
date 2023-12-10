@@ -45,8 +45,8 @@
         </div>
         <div class="input-row">
           <label for="categoria">Categoria da organização</label>
-          <select id="categoria" name="categoria">
-            <option value="" disabled selected>Escolha uma opção</option>
+          <select id="categoria" name="categoria" required>
+            <option value="" disabled selected hidden>Escolha uma opção</option>
             <option value="cultura">Cultura</option>
             <option value="racismo">Racismo</option>
             <option value="meioAmbiente">Meio Ambiente</option>
@@ -98,7 +98,7 @@
         </div>
         <div class="input-row">
           <label for="numeroConta">Codigo do Banco <i class="ri-bank-line"></i></label>
-          <input type="text" id="numeroConta" name="numeroConta" placeholder="Cod " required>
+          <input type="text" id="numeroConta" name="codBanco" placeholder="Cod " required maxlength="3">
         </div>
         <div class="input-row">
           <label for="missao">Missão da Organização <i class="ri-home-heart-line"></i></label>
@@ -108,10 +108,11 @@
           <label for="complemento">Complemento <i class="ri-home-4-line"></i> </label>
           <input type="text" id="complemento" name="complemento" placeholder="Casa/Predio">
         </div>
-        <button class="button-container" type="submit">Cadastrar</button>
+        <button class="button-container" id="botaoCad" type="submit" onclick="minhaFuncao()">Cadastrar</button>
         <div>
 
       </form>
+    </div>
 
 
 
