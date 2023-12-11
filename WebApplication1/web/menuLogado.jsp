@@ -104,7 +104,7 @@
 
 
                                     <li>
-                                        <a href="perfilLogado.jsp" class="dropdown__link">
+                                        <a href="controle?flag=perfilLogado&email=<%= emailUsuario %>" class="dropdown__link">
                                             <i class="ri-user-heart-line"></i> Perfil
                                         </a>
                                     </li>

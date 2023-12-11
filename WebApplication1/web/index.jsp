@@ -3,8 +3,9 @@
     Created on : 8 de dez. de 2023, 15:05:11
     Author     : solam
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +13,61 @@
         <title>Rocket Donation</title>
         <link rel="stylesheet" href="./css/stylesIndex.css">
     </head>
+<!--    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://localhost:8080/WebApplication1/OrgApi')
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Erro ao fazer a requisição');
+                        }
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        // Supondo que 'data' seja um array de objetos com as informações das instituições
+
+                        var instituicoesContainer = document.querySelector('.slider.slider-1');
+
+                        data.forEach(function (instituicao) {
+                            var card = document.createElement('div');
+                            card.classList.add('card__institute');
+
+                            var imagem = document.createElement('img');
+                            imagem.src = "./pictures/santos.png"; // Substitua com o caminho da sua imagem
+                            imagem.alt = 'Foto do perfil da instituição'; // Substitua 'nome' pelo nome do campo na resposta da API que contém o nome da instituição
+
+                            var nome = document.createElement('h2');
+                            nome.textContent = instituicao.nome; // Substitua 'nome' pelo nome do campo na resposta da API que contém o nome da instituição
+
+                            var missao = document.createElement('p');
+                            missao.textContent = instituicao.missao; // Substitua 'missao' pelo nome do campo na resposta da API que contém a missão da instituição
+
+                            var button = document.createElement('button');
+                            button.classList.add('button__card');
+
+                            var link = document.createElement('a');
+                            link.href = instituicao.linkDoacao; // Substitua 'linkDoacao' pelo nome do campo na resposta da API que contém o link de doação
+                            link.innerHTML = '<i class="ri-hand-heart-line"></i>Doar';
+
+                            button.appendChild(link);
+
+                            card.appendChild(imagem);
+                            card.appendChild(nome);
+                            card.appendChild(missao);
+                            card.appendChild(button);
+
+                            instituicoesContainer.appendChild(card);
+                        });
+                    })
+                    .catch(function (error) {
+                        console.error('Erro ao fazer a requisição:', error);
+                    });
+        });
+    </script>-->
+    
+    
     <body>
+        
+        
         
         <%@ include file="menuu.jsp"%>
         
@@ -88,41 +143,7 @@
                     <button class="next-button next-button-1"><i class="ri-arrow-right-line"></i></button>
                 </div>
                 <div class="slider slider-1">
-
-                    <!-- Conteúdo do primeiro slider (Instituições) -->
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 1">
-                        <h2>Instituição de Doação 1</h2>
-                        <p>Descrição da Instituição 1.</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 2">
-                        <h2>Instituição de Doação 2</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis iure odio, esse accusantium est atque, assumenda a reprehenderit aut architecto illum temporibus cupiditate expedita incidunt fuga hic, nisi nesciunt natus?</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 2">
-                        <h2>Instituição de Doação 3</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis iure odio, esse accusantium est atque, assumenda a reprehenderit aut architecto illum temporibus cupiditate expedita incidunt fuga hic, nisi nesciunt natus?</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 2">
-                        <h2>Instituição de Doação 4</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis iure odio, esse accusantium est atque, assumenda a reprehenderit aut architecto illum temporibus cupiditate expedita incidunt fuga hic, nisi nesciunt natus?</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <!-- Adicione mais cards de instituições de doação aqui -->
+                  
 
                 </div>
             </div><!-- Fim do primeiro slider -->
@@ -232,8 +253,9 @@
             </div>
         </footer>
 
-        <script src="js/indexScript.js"></script>
-        <!--=============== MAIN JS ===============-->
-        <script src="assets/js/main.js"></script>
+        <srcipt src="./scripts/indexScript.js"></script>
+        <script src="<c:url value="./scripts/menuScript.js" />"></script>
+        <script src="<c:url value="./scripts/indexScript.js" />"></script>
+        <script src="<c:url value="./scripts/OrgApi.js" />"></script>
     </body>
 </html>

@@ -170,4 +170,38 @@ public class RocketDAO {
         }
     }
     
+    public List<Organizacao> listOrg() {
+        connect();
+        try {
+
+            TypedQuery<Organizacao> query = manager.createNamedQuery("Organizacao.findAll", Organizacao.class);
+            List<Organizacao> lista = query.getResultList();
+            return lista;
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    public Doador obterDoadorPorEmail(String email){
+        connect();
+        try{
+            TypedQuery<Doador> q = manager.createNamedQuery("Doador.findByEmail", Doador.class);
+            q.setParameter("email", email);
+            return q.getSingleResult();
+        }catch (NoResultException ex){
+            return null;
+        }
+    }
+    
+    public Endereco obterEnderecoPorEmail(String email){
+        connect();
+        try{
+            TypedQuery<Endereco> q = manager.createQuery("SELECT e FROM Endereco e WHERE e.fkEmail.email = :email", Endereco.class);
+            q.setParameter("email", email);
+            return q.getSingleResult();
+        }catch (NoResultException ex) {
+            return null;
+        }
+    } 
+    
 }

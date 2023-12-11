@@ -113,14 +113,17 @@ public class controle extends HttpServlet {
                 RequestDispatcher disp = request.getRequestDispatcher("loginERRO.jsp");
                 disp.forward(request, response);
             } else {
+                
                 String nome, email, type;
                 nome = acesso.getDoador().getNome();
                 email = acesso.getDoador().getEmail();
                 type = acesso.getDoador().getUserType();
+                Endereco endereco = dao.obterEnderecoPorEmail(email);
                 session = request.getSession();
                 session.setAttribute("emailUsuario", email);
                 session.setAttribute("nomeUsuario", nome);
                 session.setAttribute("typeUsuario", type);
+                session.setAttribute("endereco", endereco);
                 RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
                 disp.forward(request, response);
             }
@@ -183,10 +186,12 @@ public class controle extends HttpServlet {
                                     nome = acesso.getDoador().getNome();
                                     email = acesso.getDoador().getEmail();
                                     type = acesso.getDoador().getUserType();
+                                    
                                     session = request.getSession();
                                     session.setAttribute("emailUsuario", email);
                                     session.setAttribute("nomeUsuario", nome);
                                     session.setAttribute("typeUsuario", type);
+                                    session.setAttribute("endereco", endereco);
                                     RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
                                     disp.forward(request, response);
                                 }
@@ -211,6 +216,21 @@ public class controle extends HttpServlet {
                 session.invalidate(); // Invalida a sessão existente
             }
             response.sendRedirect("index.jsp");
+        } else if(flag.equalsIgnoreCase("perfilLogado")){
+            String emailUsuario = request.getParameter("email");
+            Doador doa = dao.obterDoadorPorEmail(emailUsuario);
+            
+            request.setAttribute("doador", doa);
+            if(doa.getUserType().equalsIgnoreCase("Doador")){
+                
+            }else if(doa.getUserType().equalsIgnoreCase("Instituicao")){
+                RequestDispatcher disp = request.getRequestDispatcher("perfilLogado.jsp");
+                disp.forward(request, response);
+            }
+            
+            
+            
+            
         }
     }
 
