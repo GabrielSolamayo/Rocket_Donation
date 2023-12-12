@@ -29,11 +29,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Doador.findByEmail", query = "SELECT d FROM Doador d WHERE d.email = :email"),
     @NamedQuery(name = "Doador.findByNome", query = "SELECT d FROM Doador d WHERE d.nome = :nome"),
     @NamedQuery(name = "Doador.findByTelefone", query = "SELECT d FROM Doador d WHERE d.telefone = :telefone"),
-    @NamedQuery(name = "Doador.findByUserType", query = "SELECT d FROM Doador d WHERE d.userType = :userType")})
+    @NamedQuery(name = "Doador.findByUserType", query = "SELECT d FROM Doador d WHERE d.userType = :userType"),
+    @NamedQuery(name = "Doador.findByImagemUrl", query = "SELECT d FROM Doador d WHERE d.imagemUrl = :imagemUrl")})
 public class Doador implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doadorEmail")
-    private Collection<Doacao> doacaoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,10 +47,14 @@ public class Doador implements Serializable {
     @Basic(optional = false)
     @Column(name = "userType")
     private String userType;
+    @Column(name = "imagemUrl")
+    private String imagemUrl;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "doador", fetch = FetchType.EAGER)
     private Acesso acesso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkEmail", fetch = FetchType.EAGER)
     private Collection<Endereco> enderecoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doadorEmail", fetch = FetchType.EAGER)
+    private Collection<Doacao> doacaoCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "doador", fetch = FetchType.EAGER)
     private Organizacao organizacao;
 
@@ -69,6 +71,14 @@ public class Doador implements Serializable {
         this.telefone = telefone;
         this.userType = userType;
     }
+
+    public Doador(String email, String nome, String telefone) {
+        this.email = email;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
+    
+    
 
     public String getEmail() {
         return email;
@@ -102,6 +112,14 @@ public class Doador implements Serializable {
         this.userType = userType;
     }
 
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
+    }
+
     public Acesso getAcesso() {
         return acesso;
     }
@@ -116,6 +134,14 @@ public class Doador implements Serializable {
 
     public void setEnderecoCollection(Collection<Endereco> enderecoCollection) {
         this.enderecoCollection = enderecoCollection;
+    }
+
+    public Collection<Doacao> getDoacaoCollection() {
+        return doacaoCollection;
+    }
+
+    public void setDoacaoCollection(Collection<Doacao> doacaoCollection) {
+        this.doacaoCollection = doacaoCollection;
     }
 
     public Organizacao getOrganizacao() {
@@ -149,14 +175,6 @@ public class Doador implements Serializable {
     @Override
     public String toString() {
         return "model.Doador[ email=" + email + " ]";
-    }
-
-    public Collection<Doacao> getDoacaoCollection() {
-        return doacaoCollection;
-    }
-
-    public void setDoacaoCollection(Collection<Doacao> doacaoCollection) {
-        this.doacaoCollection = doacaoCollection;
     }
     
 }

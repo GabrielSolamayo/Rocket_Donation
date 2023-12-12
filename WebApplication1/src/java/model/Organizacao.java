@@ -34,11 +34,10 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Organizacao.findBySite", query = "SELECT o FROM Organizacao o WHERE o.site = :site"),
     @NamedQuery(name = "Organizacao.findByMissao", query = "SELECT o FROM Organizacao o WHERE o.missao = :missao"),
     @NamedQuery(name = "Organizacao.findByCategoria", query = "SELECT o FROM Organizacao o WHERE o.categoria = :categoria"),
-    @NamedQuery(name = "Organizacao.findByDataCadastro", query = "SELECT o FROM Organizacao o WHERE o.dataCadastro = :dataCadastro")})
+    @NamedQuery(name = "Organizacao.findByDataCadastro", query = "SELECT o FROM Organizacao o WHERE o.dataCadastro = :dataCadastro"),
+    @NamedQuery(name = "Organizacao.findByLocalImagem", query = "SELECT o FROM Organizacao o WHERE o.localImagem = :localImagem"),
+    @NamedQuery(name = "Organizacao.findByDescOrg", query = "SELECT o FROM Organizacao o WHERE o.descOrg = :descOrg")})
 public class Organizacao implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizacaoUsuarioEmail")
-    private Collection<Doacao> doacaoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,8 +56,15 @@ public class Organizacao implements Serializable {
     @Column(name = "dataCadastro")
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
+    @Column(name = "localImagem")
+    private String localImagem;
+    @Basic(optional = false)
+    @Column(name = "descOrg")
+    private String descOrg;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkEmail", fetch = FetchType.EAGER)
     private Collection<ContaBancaria> contaBancariaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizacaoUsuarioEmail", fetch = FetchType.EAGER)
+    private Collection<Doacao> doacaoCollection;
     @JoinColumn(name = "usuario_email", referencedColumnName = "email", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Doador doador;
@@ -72,11 +78,12 @@ public class Organizacao implements Serializable {
         this.usuarioEmail = usuarioEmail;
     }
 
-    public Organizacao(String usuarioEmail, String missao, String categoria, Date dataCadastro) {
+    public Organizacao(String usuarioEmail, String missao, String categoria, Date dataCadastro, String descOrg) {
         this.usuarioEmail = usuarioEmail;
         this.missao = missao;
         this.categoria = categoria;
         this.dataCadastro = dataCadastro;
+        this.descOrg = descOrg;
     }
 
     public String getUsuarioEmail() {
@@ -119,12 +126,36 @@ public class Organizacao implements Serializable {
         this.dataCadastro = dataCadastro;
     }
 
+    public String getLocalImagem() {
+        return localImagem;
+    }
+
+    public void setLocalImagem(String localImagem) {
+        this.localImagem = localImagem;
+    }
+
+    public String getDescOrg() {
+        return descOrg;
+    }
+
+    public void setDescOrg(String descOrg) {
+        this.descOrg = descOrg;
+    }
+
     public Collection<ContaBancaria> getContaBancariaCollection() {
         return contaBancariaCollection;
     }
 
     public void setContaBancariaCollection(Collection<ContaBancaria> contaBancariaCollection) {
         this.contaBancariaCollection = contaBancariaCollection;
+    }
+
+    public Collection<Doacao> getDoacaoCollection() {
+        return doacaoCollection;
+    }
+
+    public void setDoacaoCollection(Collection<Doacao> doacaoCollection) {
+        this.doacaoCollection = doacaoCollection;
     }
 
     public Doador getDoador() {
@@ -166,14 +197,6 @@ public class Organizacao implements Serializable {
     @Override
     public String toString() {
         return "model.Organizacao[ usuarioEmail=" + usuarioEmail + " ]";
-    }
-
-    public Collection<Doacao> getDoacaoCollection() {
-        return doacaoCollection;
-    }
-
-    public void setDoacaoCollection(Collection<Doacao> doacaoCollection) {
-        this.doacaoCollection = doacaoCollection;
     }
     
 }

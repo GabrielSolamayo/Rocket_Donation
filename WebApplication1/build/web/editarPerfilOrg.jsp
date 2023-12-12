@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -23,8 +23,8 @@
 
 <body>
   <header style="padding-top: 100px">
-    
-  </header>
+        <%@ include file="menuLogado.jsp" %>
+    </header>
 
   <div class="content">
 
@@ -37,8 +37,6 @@
 
         <span> Agradecemos por dedicar um momento para manter 
           sua conta sempre atualizada e personalizada.</span>
-      
-      <button id="login-cad"><a href="login.jsp">Voltar </a></button>
     </div>
     <div id="outraDiv">
       <!-- <h1>Cadastre-se</h1> -->
@@ -73,7 +71,7 @@
             <option value="educacao">Educação</option>
             <option value="saude">Saúde</option>
             <!-- Adicione outras opcoes aqui -->
-          </select>
+          </select> 
         </div>
         <div class="input-row">
           <label for="confirmarSenha">
@@ -83,9 +81,19 @@
            value="${doador.acesso.senha}" >
         </div>
         <div class="input-row">
+          <label for="urlFotoLocal">Foto do Local <i class="ri-image-line"></i></label>
+          <input type="url" id="urlFotoLocal" name="urlFotoLocal" value="${doador.organizacao.localImagem}" required>
+      </div>
+        
+        <div class="input-row">
           <label for="telefone">Telefone <i class="ri-phone-line"></i></label>
           <input type="text" id="telefone" name="telefone" value="${doador.telefone}" >
         </div>
+        
+        <div class="input-row">
+        <label for="urlFotoLocal">Foto de Perfil <i class="ri-image-line"></i></label>
+        <input type="url" id="urlFotoLocal" name="urlFotoPerfil" value="${doador.imagemUrl}" required>
+    </div>
         
         <div class="input-row">
           <label for="agenciaConta">Agência <i class="ri-bank-line"></i></label>

@@ -4,6 +4,7 @@
     Author     : solam
 --%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -88,41 +89,7 @@
                     <button class="next-button next-button-1"><i class="ri-arrow-right-line"></i></button>
                 </div>
                 <div class="slider slider-1">
-
-                    <!-- Conteúdo do primeiro slider (Instituições) -->
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 1">
-                        <h2>Instituição de Doação 1</h2>
-                        <p>Descrição da Instituição 1.</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 2">
-                        <h2>Instituição de Doação 2</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis iure odio, esse accusantium est atque, assumenda a reprehenderit aut architecto illum temporibus cupiditate expedita incidunt fuga hic, nisi nesciunt natus?</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 2">
-                        <h2>Instituição de Doação 3</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis iure odio, esse accusantium est atque, assumenda a reprehenderit aut architecto illum temporibus cupiditate expedita incidunt fuga hic, nisi nesciunt natus?</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <div class="card__institute card__institute-1">
-                        <img src="./pictures/santos.png" alt="Instituição 2">
-                        <h2>Instituição de Doação 4</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis iure odio, esse accusantium est atque, assumenda a reprehenderit aut architecto illum temporibus cupiditate expedita incidunt fuga hic, nisi nesciunt natus?</p>
-                        <button class="button__card">
-                            <a href="#" ><i class="ri-hand-heart-line"></i>Doar</a>
-                        </button>
-                    </div>
-                    <!-- Adicione mais cards de instituições de doação aqui -->
+                  
 
                 </div>
             </div><!-- Fim do primeiro slider -->
@@ -232,8 +199,9 @@
             </div>
         </footer>
 
-        <script src="js/indexScript.js"></script>
-        <!--=============== MAIN JS ===============-->
-        <script src="assets/js/main.js"></script>
+        <srcipt src="./scripts/indexScript.js"></script>
+        <script src="<c:url value="./scripts/menuScript.js" />"></script>
+        <script src="<c:url value="./scripts/indexScript.js" />"></script>
+        <script src="<c:url value="./scripts/OrgApi.js" />"></script>
     </body>
 </html>

@@ -162,15 +162,55 @@ a {
   font-size: 40px;
 
 }
+.missao{
+  width: 50%;
+  margin-top: 50px;
+  margin-left: 10%;
+  font-size: 18px;
+  line-height: 25px;
+  color: #fff;
+
+
+}
+.background{
+  background-image: url(missão.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-top: 20px;
+  width: 800px;
+  height: 500px;
+  border-radius: 20px;
+  padding-right: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+.container-missao{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+.missao-org{
+  width: 50%;
+  float: left;
+  margin-right: 10%;
+}
+.missao h1{
+  color: #3c338d;
+}
+.missao-org p{
+  font-size: 18px;
+  color: #ffffff;
+}
 
 .slider-container {
   height: 100vh;
   width: 80%;
   margin: 0 auto;
-  margin-top: 2%;
+  margin-top: 500px;
   overflow: hidden;
-  margin-top: -25px;
-  
+ 
 }
 
 .slider {
@@ -291,20 +331,26 @@ a {
   color: rgb(255, 255, 255);
   transition: all 1s ease;
 }
-.donate-card{
-  align-items: center;
-  margin-left: 80%;
- 
-}
+
+
 .donate-card {
+  height: 200px;
+  width: 300px;
   border: 1px solid #ff4d4d; /* Cor vermelha para o card de doação */
   border-radius: 8px;
-  padding: 15px;
+  padding: 10px;
   box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); /* Sombra vermelha para o card de doação */
-  margin-top: -450px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: -500px;
+  margin-left: 70%;
+ 
 }
 
 .donate-card h2 {
+  
   color: #ff4d4d; /* Cor vermelha para o título do card de doação */
 }
 
@@ -317,6 +363,7 @@ a {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 20px;
 }
 
 .donate-button a {
@@ -385,6 +432,7 @@ a {
 }
 .notice{
   height: 100vh;
+  margin-top: 1200px;
   
 }
 #noticia_card1 {

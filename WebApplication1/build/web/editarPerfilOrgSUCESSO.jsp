@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -131,6 +131,7 @@
           <label for="complemento">Complemento <i class="ri-home-4-line"></i> </label>
           <input type="text" id="complemento" name="complemento" value="${endereco.complemento}">
         </div>
+        <p>${m}</p>
         <button class="button-container" type="submit">Atualizar</button>
         <div>
 

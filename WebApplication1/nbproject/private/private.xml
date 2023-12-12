@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/src/java/model/Organizacao.java</file>
             <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/src/java/controller/controle.java</file>
-            <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/indexDoador.jsp</file>
+            <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/editarPerfilOrgERRO.jsp</file>
+            <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/perfilLogado.jsp</file>
             <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/src/java/model/RocketDAO.java</file>
+            <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/editarPerfilOrg.jsp</file>
+            <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/cadastroOrg.jsp</file>
             <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/menuLogado.jsp</file>
             <file>file:/C:/Users/solam/OneDrive/Área%20de%20Trabalho/Projeto/Rocket_Donation/WebApplication1/web/perfilDoador.jsp</file>
         </group>

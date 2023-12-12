@@ -26,7 +26,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Acesso.findAll", query = "SELECT a FROM Acesso a"),
     @NamedQuery(name = "Acesso.findBySenha", query = "SELECT a FROM Acesso a WHERE a.senha = :senha"),
     @NamedQuery(name = "Acesso.findByEmail", query = "SELECT a FROM Acesso a WHERE a.email = :email"),
-    @NamedQuery(name = "Acesso.findByEmailSenha", query = "SELECT a FROM Acesso a WHERE a.email = :email AND a.senha = :senha"),})
+    @NamedQuery(name = "Acesso.findByEmailSenha", query = "SELECT a FROM Acesso a WHERE a.email = :email AND a.senha = :senha")
+})
 public class Acesso implements Serializable {
 
     private static final long serialVersionUID = 1L;

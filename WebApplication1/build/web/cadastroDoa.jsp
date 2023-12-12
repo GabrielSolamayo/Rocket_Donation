@@ -24,7 +24,7 @@
                 <h1>Cadastro</h1>
             </div>
             <h1><i class="ri-user-add-line"></i></h1>
-            <h1>Bem vindo de volta!</h1>
+            <h1>Bem vindo de volta</h1>
             <span>Se já possuir uma conta, faça login.</span>
             <button id="login-cad"><a href="login.jsp">Login</a></button>
         </div>
@@ -33,12 +33,17 @@
 
             <form id="cadastrar-form" method="POST" action="controle">
                 <input type="hidden" name="flag" value="cadastroDoador">
-
+                
                 <div class="input-row">
                     <label for="nome">
                         <p>Nome <i class="ri-user-3-line"></i></p>
                     </label>
                     <input type="text" id="nome" name="nome" placeholder="Digite Seu Nome" required>
+                </div>
+
+                <div class="input-row">
+                    <label for="urlFotoPerfil">Foto do Perfil <i class="ri-image-line"></i></label>
+                    <input type="url" id="urlFotoPerfil" name="urlFotoPerfil" placeholder="URL da Foto do Perfil" required>
                 </div>
 
                 <div class="input-row">

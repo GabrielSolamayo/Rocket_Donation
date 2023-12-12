@@ -52,6 +52,7 @@ public class controle extends HttpServlet {
             doador.setNome(request.getParameter("nome"));
             doador.setEmail(request.getParameter("email"));
             doador.setTelefone(request.getParameter("telefone"));
+            doador.setImagemUrl(request.getParameter("urlFotoPerfil"));
             doador.setUserType("Doador");
             senha = request.getParameter("senha");
             senhaV = request.getParameter("confirmarSenha");
@@ -83,6 +84,8 @@ public class controle extends HttpServlet {
                             session.setAttribute("emailUsuario", email);
                             session.setAttribute("nomeUsuario", nome);
                             session.setAttribute("typeUsuario", type);
+                            session.setAttribute("endereco", endereco);
+                            request.setCharacterEncoding("UTF-8");
                             RequestDispatcher disp = request.getRequestDispatcher("indexLogado.jsp");
                             disp.forward(request, response);
                         } else {
@@ -140,6 +143,7 @@ public class controle extends HttpServlet {
             doadOR.setEmail(request.getParameter("emailOrg"));
             doadOR.setNome(request.getParameter("nomeOrg"));
             doadOR.setTelefone(request.getParameter("telefone"));
+            doadOR.setImagemUrl(request.getParameter("urlFotoPerfil"));
             doadOR.setUserType("Instituicao");
             senha = request.getParameter("senha");
             senhaV = request.getParameter("confirmarSenha");
@@ -167,6 +171,8 @@ public class controle extends HttpServlet {
                                 String dataFormatada = formato.format(dataAtual);
                                 Date dataConvertida = formato.parse(dataFormatada);
                             org.setDataCadastro(dataConvertida);
+                            org.setLocalImagem(request.getParameter("urlFotoLocal"));
+                            org.setDescOrg(request.getParameter("descOrg"));
                             org.setUsuarioEmail(doadOR.getEmail());
                             resp = dao.verificarCadastroOrg(org);
                             if(resp){ //Verifica se o cadastro de organizacao seria bem sucessido;
@@ -263,7 +269,7 @@ public class controle extends HttpServlet {
             
             
         } else if(flag.equalsIgnoreCase("alterarOrg")){
-            String senha, senhaV, pkDoa, nomeOrg, site, categoria, telefone, agenciaConta, cep, numeroConta, rua, chavePix, numero, codBanco, missao, complemento;
+            String senha, senhaV, pkDoa, nomeOrg, site, categoria, telefone, agenciaConta, cep, numeroConta, rua, chavePix, numero, codBanco, missao, complemento, urlLocal, urlPerfil;
             int pkEnd, pkBan;
             
             senha = request.getParameter("senha");
@@ -285,20 +291,69 @@ public class controle extends HttpServlet {
             codBanco = request.getParameter("codBanco");
             missao = request.getParameter("missao");
             complemento = request.getParameter("complemento");
+            urlLocal = request.getParameter("urlFotoLocal");
+            urlPerfil = request.getParameter("urlFotoPerfil");
             
-            boolean resp = dao.alterarOrganizacao(pkEnd, pkBan, pkDoa, senha, senhaV, nomeOrg, site, categoria, telefone, agenciaConta, cep, numeroConta, rua, chavePix, numero, codBanco, missao, complemento);
+            boolean resp = dao.alterarOrganizacao(pkEnd, pkBan, pkDoa, senha, senhaV, nomeOrg, site, categoria, telefone, agenciaConta, cep, numeroConta, rua, chavePix, numero, codBanco, missao, complemento, urlLocal, urlPerfil);
             
             if(resp){
                 
                 mensagem = "Alteração feito com sucesso!";
                 request.setAttribute("m", mensagem);
-                RequestDispatcher disp = request.getRequestDispatcher("cadastroOrgERRO.jsp"); //Utilizando o jsp de erro para demonstrar uma mensagem de sucesso alteração;
+                RequestDispatcher disp = request.getRequestDispatcher("perfilLogado.jsp");
                 disp.forward(request, response);
             }
             
             
             
             
+        } else if (flag.equalsIgnoreCase("editarDoador")) {
+
+            String email = request.getParameter("email");
+            Doador doador = dao.obterDoadorPorEmail(email);
+            Endereco endereco = dao.obterEnderecoPorEmail(email);
+
+            request.setAttribute("doador", doador);
+            request.setAttribute("endereco", endereco);
+
+            RequestDispatcher disp = request.getRequestDispatcher("editarDoador.jsp");
+            disp.forward(request, response);
+        } else if (flag.equalsIgnoreCase("alterarFuncionario")) {
+
+            String email = request.getParameter("email");
+            Integer id = Integer.valueOf(request.getParameter("idEndereco"));
+
+            response.getWriter().print(id);
+            response.getWriter().print(email);
+
+            String nome = request.getParameter("nome");
+            String telefone = request.getParameter("telefone");
+
+            Doador doador = new Doador(email, request.getParameter("nome"), request.getParameter("telefone"));
+
+            String rua = request.getParameter("rua");
+            Integer numero = Integer.valueOf(request.getParameter("numero"));
+            String cep = request.getParameter("cep");
+            String complemento = request.getParameter("complemento");
+
+            Endereco endereco = new Endereco(id, request.getParameter("rua"), Integer.valueOf(request.getParameter("numero")),
+                    request.getParameter("cep"), request.getParameter("complemento"));
+
+            dao.alterarDoador(doador, endereco);
+
+            String senha = request.getParameter("senha");
+            String senhaV = request.getParameter("senha2");
+
+            if (senha.equals(senhaV) && senha != null) {
+                Acesso acesso = new Acesso(doador.getEmail(), senha);
+                dao.alterarSenha(acesso, email);
+            }
+
+            request.setAttribute("doador", doador);
+            request.setAttribute("endereco", endereco);
+
+            RequestDispatcher disp = request.getRequestDispatcher("perfilDoador.jsp");
+            disp.forward(request, response);
         }
     }
 

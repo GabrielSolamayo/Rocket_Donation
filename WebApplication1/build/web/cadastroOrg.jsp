@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -35,6 +35,7 @@
           <label for="nomeOrg">Nome da Organização <i class="ri-home-heart-line"></i></label>
           <input type="text" id="nomeOrg" name="nomeOrg" placeholder="Nome da Organização" required>
         </div>
+        
         <div class="input-row">
           <label for="site">Site <i class="ri-global-line"></i></label>
           <input type="text" id="site" name="site" placeholder="www.ex@.com" required>
@@ -43,12 +44,13 @@
           <label for="emailOrg">E-mail <i class="ri-mail-line"></i></label>
           <input type="email" id="emailOrg" name="emailOrg" placeholder="ex@.com" required>
         </div>
+        
         <div class="input-row">
           <label for="categoria">Categoria da organização</label>
           <select id="categoria" name="categoria" required>
             <option value="" disabled selected hidden>Escolha uma opção</option>
             <option value="cultura">Cultura</option>
-            <option value="racismo">Racismo</option>
+            <option value="racismo">Anti-Racismo</option>
             <option value="meioAmbiente">Meio Ambiente</option>
             <option value="educacao">Educação</option>
             <option value="saude">Saúde</option>
@@ -56,14 +58,30 @@
           </select>
         </div>
         <div class="input-row">
+          <label for="urlFotoLocal">Foto do Local <i class="ri-image-line"></i></label>
+          <input type="url" id="urlFotoLocal" name="urlFotoLocal" placeholder="URL da Foto do Local" required>
+      </div>
+      <div class="input-row">
+        <label for="telefone">Telefone <i class="ri-phone-line"></i></label>
+        <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" required>
+      </div>
+      <div class="input-row">
+        <label for="urlFotoLocal">Foto de Perfil <i class="ri-image-line"></i></label>
+        <input type="url" id="urlFotoLocal" name="urlFotoPerfil" placeholder="URL da Foto do Local" required>
+    </div>
+    <div class="input-row">
+      <label for="cep">CEP <i class="ri-map-pin-line"></i></label>
+      <input type="text" id="cep" name="cep" placeholder="CEP" required>
+    </div>
+        <div class="input-row">
           <label for="senha">
             <p> Senha <i class="ri-lock-password-line"></i></p>
           </label>
           <input class="campo" type="password" id="senha" name="senha" placeholder="Senha" required>
         </div>
         <div class="input-row">
-          <label for="telefone">Telefone <i class="ri-phone-line"></i></label>
-          <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" required>
+          <label for="agenciaConta">Agência <i class="ri-bank-line"></i></label>
+          <input type="text" id="agenciaConta" name="agenciaConta" placeholder="Agência" required>
         </div>
         <div class="input-row">
           <label for="confirmarSenha">
@@ -72,13 +90,10 @@
           <input class="campo" type="password" id="confirmarSenha" name="confirmarSenha"
             placeholder="Confirme sua senha" required>
         </div>
+        
         <div class="input-row">
-          <label for="agenciaConta">Agência <i class="ri-bank-line"></i></label>
-          <input type="text" id="agenciaConta" name="agenciaConta" placeholder="Agência" required>
-        </div>
-        <div class="input-row">
-          <label for="cep">CEP <i class="ri-map-pin-line"></i></label>
-          <input type="text" id="cep" name="cep" placeholder="CEP" required>
+          <label for="site">Descrição breve do Organizacao <i class=""></i></label>
+          <input type="text" id="site" name="descOrg" placeholder="Esta organização..." required>
         </div>
         <div class="input-row">
           <label for="numeroConta">Conta Bancária <i class="ri-bank-line"></i></label>

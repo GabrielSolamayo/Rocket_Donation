@@ -9,6 +9,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -33,6 +35,7 @@ public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idendereco")
     private Integer idendereco;
@@ -64,6 +67,16 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.cep = cep;
     }
+
+    public Endereco(Integer idendereco, String rua, int numero, String cep, String complemento) {
+        this.idendereco = idendereco;
+        this.rua = rua;
+        this.numero = numero;
+        this.cep = cep;
+        this.complemento = complemento;
+    }
+    
+    
 
     public Integer getIdendereco() {
         return idendereco;

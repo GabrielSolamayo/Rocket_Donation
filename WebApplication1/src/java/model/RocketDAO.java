@@ -226,7 +226,7 @@ public class RocketDAO {
         }
     }
     
-    public boolean alterarOrganizacao (int pkEndere, int pkCB, String pkDoa,String senha, String senhaV, String nomeOrg, String site, String categoria, String telefone, String agenciaConta, String cep, String numeroConta, String rua, String chavePix, String numero, String codBanco, String missao, String complemento){
+    public boolean alterarOrganizacao (int pkEndere, int pkCB, String pkDoa,String senha, String senhaV, String nomeOrg, String site, String categoria, String telefone, String agenciaConta, String cep, String numeroConta, String rua, String chavePix, String numero, String codBanco, String missao, String complemento, String urlLocal, String urlPerfil){
         connect();
         try{
             
@@ -236,12 +236,16 @@ public class RocketDAO {
             
             doa.setNome(nomeOrg);
             doa.setTelefone(telefone);
+            doa.setImagemUrl(urlPerfil);
             
             doa.getAcesso().setSenha(senha);
             
             doa.getOrganizacao().setCategoria(categoria);
             doa.getOrganizacao().setMissao(missao);
             doa.getOrganizacao().setSite(site);
+            doa.getOrganizacao().setLocalImagem(urlLocal);
+            doa.getOrganizacao().setMissao(missao);
+            
             
             end.setCep(cep);
             end.setComplemento(complemento);
@@ -269,6 +273,54 @@ public class RocketDAO {
             return true;
         }catch (NoResultException e){
             return false;
+        }
+    }
+    
+    public boolean alterarDoador(Doador doador, Endereco endereco) {
+        connect();
+        try {
+
+            Doador doadorUpdate = manager.find(Doador.class, doador.getEmail());
+            Endereco enderecoUpdate = manager.find(Endereco.class, endereco.getIdendereco());
+
+            doadorUpdate.setNome(doador.getNome());
+            doadorUpdate.setTelefone(doador.getTelefone());
+
+            enderecoUpdate.setRua(endereco.getRua());
+            enderecoUpdate.setNumero(endereco.getNumero());
+            enderecoUpdate.setCep(endereco.getCep());
+            enderecoUpdate.setComplemento(endereco.getComplemento());
+
+            manager.getTransaction().begin();
+            manager.merge(doadorUpdate);//So aceita tipos Object;
+            manager.getTransaction().commit();
+
+            manager.getTransaction().begin();
+            manager.merge(enderecoUpdate);//So aceita tipos Object;
+            manager.getTransaction().commit();
+
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
+
+    public boolean alterarSenha(Acesso acesso, String email) {
+        connect();
+        try {
+
+            Acesso acessoUpdate = manager.find(Acesso.class, email);
+
+            acessoUpdate.setSenha(acesso.getSenha());
+
+            manager.getTransaction().begin();
+            manager.merge(acessoUpdate);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            throw new  NullPointerException("");
         }
     }
     
