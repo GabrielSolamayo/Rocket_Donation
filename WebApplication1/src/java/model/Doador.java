@@ -32,6 +32,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Doador.findByUserType", query = "SELECT d FROM Doador d WHERE d.userType = :userType")})
 public class Doador implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doadorEmail")
+    private Collection<Doacao> doacaoCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -146,6 +149,14 @@ public class Doador implements Serializable {
     @Override
     public String toString() {
         return "model.Doador[ email=" + email + " ]";
+    }
+
+    public Collection<Doacao> getDoacaoCollection() {
+        return doacaoCollection;
+    }
+
+    public void setDoacaoCollection(Collection<Doacao> doacaoCollection) {
+        this.doacaoCollection = doacaoCollection;
     }
     
 }

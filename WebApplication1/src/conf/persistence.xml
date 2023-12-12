@@ -8,6 +8,7 @@
     <class>model.Acesso</class>
     <class>model.Organizacao</class>
     <class>model.Noticia</class>
+    <class>model.Doacao</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rocket?useTimezone=true&amp;serverTimezone=UTC"/>

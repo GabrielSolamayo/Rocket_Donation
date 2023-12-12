@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.Doador" %>
 <%@ page import="model.Endereco" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -36,8 +37,8 @@
             <img src="pictures/Logo_oficial_-_MXS.png" alt="">
             <h2>${doador.nome}</h2>
             <div class="opcoes_perfil">
-                <a href="#"><button class="botao_perfil"><i class="ri-edit-2-line"></i>Editar Perfil</button></a>
-                <a href="historico.jsp"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Histórico</button></a>
+                <a href="controle?flag=editarPerfilOrg&email=${doador.email}&enderecoID=${endereco.idendereco}"><button class="botao_perfil"><i class="ri-edit-2-line"></i>Editar Perfil</button></a>
+                <a href="controle?flag=historico&email=${doador.email}"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Histórico</button></a>
                <button class="botao_perfil"><i class="ri-draft-fill"></i>Publicar Noticia</button>
            </div>
          </div>

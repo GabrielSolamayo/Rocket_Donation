@@ -37,6 +37,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Organizacao.findByDataCadastro", query = "SELECT o FROM Organizacao o WHERE o.dataCadastro = :dataCadastro")})
 public class Organizacao implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizacaoUsuarioEmail")
+    private Collection<Doacao> doacaoCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -163,6 +166,14 @@ public class Organizacao implements Serializable {
     @Override
     public String toString() {
         return "model.Organizacao[ usuarioEmail=" + usuarioEmail + " ]";
+    }
+
+    public Collection<Doacao> getDoacaoCollection() {
+        return doacaoCollection;
+    }
+
+    public void setDoacaoCollection(Collection<Doacao> doacaoCollection) {
+        this.doacaoCollection = doacaoCollection;
     }
     
 }

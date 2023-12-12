@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="model.Doacao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.Doador" %>
 <%@ page import="model.Endereco" %>
@@ -32,15 +34,17 @@
 <div class="historico">
     <h1><i class="ri-edit-box-line"></i> Histórico de Doações</h1>
     <div class="historico-info">
+        <%
+            List<Doacao> listaDoacaoOrg = (List<Doacao>) request.getAttribute("listarDoacao");
+        %>
+        
+        <% for(Doacao doacao: listaDoacaoOrg){ %>
         <div class="historico-item">
-            <h2>Doção 1</h2>
-            <p>Data: 01/01/2024</p>
-            <p>Valor: R$ 100,00</p>
-            <p>Descrição: Doação para projeto de construção de escola</p>
-            <p>Status: Pendente</p>
-            <button class="editar-btn"><a href=""><i class="ri-edit-line"></i>Editar</a></button>
-            
+            <h2><%= doacao.getOrganizacaoUsuarioEmail() %></h2>
+            <p><%= doacao.getDataDoacao()%></p>
+            <p><%= doacao.getValor()%></p>
         </div>
+        <% } %>
     </div>
 </div>
 </div><!--Background-->
