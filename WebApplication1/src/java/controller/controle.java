@@ -227,6 +227,9 @@ public class controle extends HttpServlet {
             request.setAttribute("doador", doa);
             if(doa.getUserType().equalsIgnoreCase("Doador")){
                 
+                RequestDispatcher disp = request.getRequestDispatcher("perfilDoador.jsp");
+                disp.forward(request, response);
+                
             }else if(doa.getUserType().equalsIgnoreCase("Instituicao")){
                 RequestDispatcher disp = request.getRequestDispatcher("perfilLogado.jsp");
                 disp.forward(request, response);
@@ -260,45 +263,39 @@ public class controle extends HttpServlet {
             
             
         } else if(flag.equalsIgnoreCase("alterarOrg")){
-            String senha, senhaV, pkDoa, pkAces, pkOrg;
+            String senha, senhaV, pkDoa, nomeOrg, site, categoria, telefone, agenciaConta, cep, numeroConta, rua, chavePix, numero, codBanco, missao, complemento;
             int pkEnd, pkBan;
-            Doador doador = new Doador();
-            Endereco endereco = new Endereco();
-            ContaBancaria bancario = new ContaBancaria();
-            Acesso acesso = new Acesso();
-            Organizacao org = new Organizacao();
             
+            senha = request.getParameter("senha");
+            senhaV = request.getParameter("confirmarSenha");
             pkDoa = request.getParameter("pkDoador");
             pkEnd = Integer.parseInt(request.getParameter("pkEndereco"));
             pkBan = Integer.parseInt(request.getParameter("pkContaBancaria"));
-            pkAces = request.getParameter("pkAcesso");
-            pkOrg = request.getParameter("pkOrganizacao");
             
-            doador.setEmail(request.getParameter("emailOrg"));
-            doador.setNome(request.getParameter("nomeOrg"));
-            doador.setTelefone(request.getParameter("telefone"));
-            doador.setUserType("Instituicao");
-            senha = request.getParameter("senha");
-            senhaV = request.getParameter("confirmarSenha");
-            if(senha.equals(senhaV)){
-                boolean resp = dao.alterarOrganizacao(doador, endereco, acesso, bancario, org, pkDoa, pkEnd, pkBan, pkAces, pkOrg, senha);
-                if(resp){
-                    mensagem = "Alteração feito com sucesso";
-                    request.setAttribute("m", mensagem);
-                    RequestDispatcher disp = request.getRequestDispatcher("editarPerfilOrgERRO.jsp"); //Estou usando a mesma de tela para notifica o sucesso da alteração, por pura preguiça e limitação cerebral;
-                    disp.forward(request, response);
-                }else {
-                    mensagem = "Alteração nao efetuada";
-                    request.setAttribute("m", mensagem);
-                    RequestDispatcher disp = request.getRequestDispatcher("editarPerfilOrgERRO.jsp"); 
-                    disp.forward(request, response);
-                } 
-            }else{
-                mensagem = "Senha estão diferentes.";
+            nomeOrg = request.getParameter("nomeOrg");
+            site = request.getParameter("site");
+            categoria = request.getParameter("categoria");
+            telefone = request.getParameter("telefone");
+            agenciaConta = request.getParameter("agenciaConta");
+            cep = request.getParameter("cep");
+            numeroConta = request.getParameter("numeroConta");
+            rua = request.getParameter("rua");
+            chavePix = request.getParameter("chavePix");
+            numero = request.getParameter("numero");
+            codBanco = request.getParameter("codBanco");
+            missao = request.getParameter("missao");
+            complemento = request.getParameter("complemento");
+            
+            boolean resp = dao.alterarOrganizacao(pkEnd, pkBan, pkDoa, senha, senhaV, nomeOrg, site, categoria, telefone, agenciaConta, cep, numeroConta, rua, chavePix, numero, codBanco, missao, complemento);
+            
+            if(resp){
+                
+                mensagem = "Alteração feito com sucesso!";
                 request.setAttribute("m", mensagem);
-                RequestDispatcher disp = request.getRequestDispatcher("editarPerfilOrgERRO.jsp");
+                RequestDispatcher disp = request.getRequestDispatcher("cadastroOrgERRO.jsp"); //Utilizando o jsp de erro para demonstrar uma mensagem de sucesso alteração;
                 disp.forward(request, response);
             }
+            
             
             
             

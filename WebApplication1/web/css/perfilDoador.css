@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+
+
+
+}
+body{
+    background-color: rgb(255, 249, 241);
+}
+
+.background {
+
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-image: url( background_imgs/fundo-perfil-doador.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+
+
+
+}
+.container-perfil-doador{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+
+
+}
+.divider-red{
+    height: 700px;
+    width: 3px;
+    border-left: 5px solid rgb(241, 241, 241);
+    margin-left: 300px;
+    margin-top: 150px;
+
+
+}
+.perfil{
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin-left: 200px;
+    margin-bottom: 300px;
+}
+.perfil h1{
+    color: rgb(250, 250, 250);
+    font-size: 30px;
+}
+.perfil-info img{
+
+    width: 200px;
+    /* ajuste o valor conforme necessário */
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.editar-btn{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(0, 255, 55);
+    cursor: pointer;
+}
+.editar-btn a{
+    text-decoration: none;
+    color: rgb(80, 80, 80);
+}
+.doador{
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+}
+.doador h1{
+    color:#f7f7f7;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 100px;
+
+}
+.doador-info{
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    background-color:#A69586;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.doador-item{
+    align-items: center;
+    margin-bottom: 50px;
+}
+.doador-item h2{
+    color: rgb(65, 60, 60);
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+.doador-item p{
+    color: snow;
+    font-size: 30px;
+    margin-bottom: 20px;
+
+}

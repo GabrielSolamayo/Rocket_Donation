@@ -44,11 +44,10 @@
       <!-- <h1>Cadastre-se</h1> -->
       <form id="cadastrar-form" method="POST" action="controle">
         <input type="hidden" name="flag" value="alterarOrg">
+        
         <input type="hidden" name="pkDoador" value="${doador.email}">
         <input type="hidden" name="pkEndereco" value="${endereco.idendereco}">
         <input type="hidden" name="pkContaBancaria" value="${bancario.idCc}">
-        <input type="hidden" name="pkAcesso" value="${doador.acesso.email}">
-        <input type="hidden" name="pkOrganizacao" value="${doador.organizacao.usuarioEmail}">
         
         <div class="input-row">
           <label for="nomeOrg">Nome da Organização <i class="ri-home-heart-line"></i></label>
@@ -59,13 +58,15 @@
           <input type="text" id="site" name="site" value="${doador.organizacao.site}">
         </div>
         <div class="input-row">
-          <label for="emailOrg">E-mail <i class="ri-mail-line"></i></label>
-          <input type="email" id="emailOrg" name="emailOrg" value="${doador.email}">
+          <label for="senha">
+            <p> Senha <i class="ri-lock-password-line"></i></p>
+          </label>
+          <input class="campo" type="password" id="senha" name="senha" value="${doador.acesso.senha}" >
         </div>
         <div class="input-row">
           <label for="categoria">Categoria da organização</label>
-          <select id="categoria" name="categoria">
-            <option value="${doador.organizacao.categoria}" disabled selected>${doador.organizacao.categoria}</option>
+          <select id="categoria" name="categoria" required>
+            <option value="" disabled selected hidden>Escolha uma opção</option>
             <option value="cultura">Cultura</option>
             <option value="racismo">Racismo</option>
             <option value="meioAmbiente">Meio Ambiente</option>
@@ -75,22 +76,17 @@
           </select>
         </div>
         <div class="input-row">
-          <label for="senha">
-            <p> Senha <i class="ri-lock-password-line"></i></p>
-          </label>
-          <input class="campo" type="password" id="senha" name="senha" value="${doador.acesso.senha}" >
-        </div>
-        <div class="input-row">
-          <label for="telefone">Telefone <i class="ri-phone-line"></i></label>
-          <input type="text" id="telefone" name="telefone" value="${doador.telefone}" >
-        </div>
-        <div class="input-row">
           <label for="confirmarSenha">
             <p> Confirme <i class="ri-pass-valid-line"></i></p>
           </label>
           <input class="campo" type="password" id="confirmarSenha" name="confirmarSenha"
            value="${doador.acesso.senha}" >
         </div>
+        <div class="input-row">
+          <label for="telefone">Telefone <i class="ri-phone-line"></i></label>
+          <input type="text" id="telefone" name="telefone" value="${doador.telefone}" >
+        </div>
+        
         <div class="input-row">
           <label for="agenciaConta">Agência <i class="ri-bank-line"></i></label>
           <input type="text" id="agenciaConta" name="agenciaConta" value="${bancario.agenciaConta}" >
@@ -117,7 +113,7 @@
         </div>
         <div class="input-row">
           <label for="numeroConta">Codigo do Banco <i class="ri-bank-line"></i></label>
-          <input type="text" id="numeroConta" name="numeroConta" value="${bancario.codBanco}" >
+          <input type="text" id="numeroConta" name="codBanco" value="${bancario.codBanco}" >
         </div>
         <div class="input-row">
           <label for="missao">Missão da Organização <i class="ri-home-heart-line"></i></label>

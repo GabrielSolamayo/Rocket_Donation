@@ -226,40 +226,32 @@ public class RocketDAO {
         }
     }
     
-    public boolean alterarOrganizacao (Doador doador, Endereco endereco, Acesso acesso, ContaBancaria bancario, Organizacao org, String pkDoador, int pkEndere, int pkCB, String pkAcesso, String pkOrganizacao, String senha){
+    public boolean alterarOrganizacao (int pkEndere, int pkCB, String pkDoa,String senha, String senhaV, String nomeOrg, String site, String categoria, String telefone, String agenciaConta, String cep, String numeroConta, String rua, String chavePix, String numero, String codBanco, String missao, String complemento){
         connect();
         try{
             
-            Doador doa = manager.find(Doador.class, pkDoador);
+            Doador doa = manager.find(Doador.class, pkDoa);
             Endereco end = manager.find(Endereco.class, pkEndere);
-            Acesso aces = manager.find(Acesso.class, pkAcesso);
             ContaBancaria cb = manager.find(ContaBancaria.class, pkCB);
-            Organizacao orga = manager.find(Organizacao.class, pkOrganizacao);
             
-            doa.setEmail(doador.getEmail());
-            doa.setNome(doador.getNome());
-            doa.setTelefone(doador.getTelefone());
+            doa.setNome(nomeOrg);
+            doa.setTelefone(telefone);
             
-            end.setCep(endereco.getCep());
-            end.setComplemento(endereco.getComplemento());
-            end.setFkEmail(endereco.getFkEmail());
-            end.setNumero(endereco.getNumero());
-            end.setRua(endereco.getRua());
+            doa.getAcesso().setSenha(senha);
             
-            aces.setDoador(doador);
-            aces.setEmail(doador.getEmail());
-            aces.setSenha(senha);
+            doa.getOrganizacao().setCategoria(categoria);
+            doa.getOrganizacao().setMissao(missao);
+            doa.getOrganizacao().setSite(site);
             
-            cb.setAgenciaConta(bancario.getAgenciaConta());
-            cb.setChavePix(bancario.getChavePix());
-            cb.setCodBanco(bancario.getCodBanco());
-            cb.setFkEmail(bancario.getFkEmail());
-            cb.setNumeroConta(bancario.getNumeroConta());
+            end.setCep(cep);
+            end.setComplemento(complemento);
+            end.setNumero(Integer.parseInt(numero));
+            end.setRua(rua);
             
-            orga.setCategoria(org.getCategoria());
-            orga.setMissao(org.getMissao());
-            orga.setUsuarioEmail(org.getUsuarioEmail());
-            orga.setSite(org.getSite());
+            cb.setAgenciaConta(agenciaConta);
+            cb.setChavePix(chavePix);
+            cb.setCodBanco(codBanco);
+            cb.setNumeroConta(numeroConta);
             
             manager.getTransaction().begin();
             manager.merge(doa);//So aceita tipos Object;
@@ -270,16 +262,10 @@ public class RocketDAO {
             manager.getTransaction().commit();
             
             manager.getTransaction().begin();
-            manager.merge(aces);//So aceita tipos Object;
-            manager.getTransaction().commit();
-            
-            manager.getTransaction().begin();
             manager.merge(cb);//So aceita tipos Object;
             manager.getTransaction().commit();
             
-            manager.getTransaction().begin();
-            manager.merge(orga);//So aceita tipos Object;
-            manager.getTransaction().commit();
+            
             return true;
         }catch (NoResultException e){
             return false;
