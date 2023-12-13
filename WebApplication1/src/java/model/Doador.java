@@ -17,6 +17,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -24,6 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "doador")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Doador.findAll", query = "SELECT d FROM Doador d"),
     @NamedQuery(name = "Doador.findByEmail", query = "SELECT d FROM Doador d WHERE d.email = :email"),
@@ -53,7 +56,7 @@ public class Doador implements Serializable {
     private Acesso acesso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkEmail", fetch = FetchType.EAGER)
     private Collection<Endereco> enderecoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doadorEmail", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "doadorEmail", fetch = FetchType.EAGER)
     private Collection<Doacao> doacaoCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "doador", fetch = FetchType.EAGER)
     private Organizacao organizacao;
@@ -128,6 +131,7 @@ public class Doador implements Serializable {
         this.acesso = acesso;
     }
 
+    @XmlTransient
     public Collection<Endereco> getEnderecoCollection() {
         return enderecoCollection;
     }
@@ -136,6 +140,7 @@ public class Doador implements Serializable {
         this.enderecoCollection = enderecoCollection;
     }
 
+    @XmlTransient
     public Collection<Doacao> getDoacaoCollection() {
         return doacaoCollection;
     }

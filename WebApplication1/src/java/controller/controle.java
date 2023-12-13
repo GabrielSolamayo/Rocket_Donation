@@ -394,6 +394,59 @@ public class controle extends HttpServlet {
                 disp.forward(request, response);
             }
             
+        } else if(flag.equalsIgnoreCase("orgSelecionado")){
+            String email = request.getParameter("email");
+            Doador doador = dao.obterDoadorPorEmail(email);
+            Endereco endereco = dao.obterEnderecoPorEmail(email);
+            request.setAttribute("doador", doador);
+            request.setAttribute("endereco", endereco);
+            session = request.getSession(false);
+            if(session != null && session.getAttribute("emailUsuario") != null){
+                //Logado
+                RequestDispatcher disp = request.getRequestDispatcher("perfilOrgVisitaLog.jsp");
+                disp.forward(request, response);
+            }else{
+                //Nao logado
+                RequestDispatcher disp = request.getRequestDispatcher("perfilOrgVisita.jsp");
+                disp.forward(request, response);
+            }
+            
+        } else if(flag.equalsIgnoreCase("doacaoSemLog")){
+            Doacao doacao = new Doacao();
+            Date dataAtual = new Date();
+            String emailOrg = request.getParameter("pkOrg");
+            Organizacao org = dao.obterOrganizacaoPorEmail(emailOrg);
+            
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataFormatada = formato.format(dataAtual);
+                Date dataConvertida  = formato.parse(dataFormatada);
+            doacao.setDataDoacao(dataConvertida);
+            doacao.setValor(Float.parseFloat(request.getParameter("valorDoacao")));
+            doacao.setOrganizacaoUsuarioEmail(org);
+            boolean resp = dao.verificarCadastroDoacao(doacao);
+            if(resp){
+                dao.cadastroDoacao(doacao);
+                mensagem = "Obrigado pela doacao!!";
+                request.setAttribute("m", mensagem);
+                RequestDispatcher disp = request.getRequestDispatcher("doacaoMensagem.jsp");
+                disp.forward(request, response);
+                
+            }
+            
+        } else if(flag.equalsIgnoreCase("doacaoSL")){
+            String emailOrg = request.getParameter("emailOrg");
+            request.setAttribute("emailOrg", emailOrg);
+            RequestDispatcher disp = request.getRequestDispatcher("doacao.jsp");
+            disp.forward(request, response);
+            
+        } else if (flag.equalsIgnoreCase("noticiaId")) {
+            String idNoticia = request.getParameter("idNoticia");
+            Integer id = Integer.parseInt(idNoticia);
+
+            Noticia noticia = dao.noticiaFindId(id);
+            request.setAttribute("noticia", noticia);
+            RequestDispatcher disp = request.getRequestDispatcher("iframe.jsp");
+            disp.forward(request, response);
         }
     }
 

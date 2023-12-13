@@ -43,6 +43,8 @@
       <img
         src="https://www.gov.br/inss/pt-br/centrais-de-conteudo/imagens/qr-code-novo-fw-300x300-png/@@images/image.png"
         alt="QR">
+      
+      <p>${m}</p>
 
     </div>
   </div>

@@ -21,6 +21,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,6 +30,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "organizacao")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Organizacao.findAll", query = "SELECT o FROM Organizacao o"),
     @NamedQuery(name = "Organizacao.findByUsuarioEmail", query = "SELECT o FROM Organizacao o WHERE o.usuarioEmail = :usuarioEmail"),
@@ -142,6 +145,7 @@ public class Organizacao implements Serializable {
         this.descOrg = descOrg;
     }
 
+    @XmlTransient
     public Collection<ContaBancaria> getContaBancariaCollection() {
         return contaBancariaCollection;
     }
@@ -150,6 +154,7 @@ public class Organizacao implements Serializable {
         this.contaBancariaCollection = contaBancariaCollection;
     }
 
+    @XmlTransient
     public Collection<Doacao> getDoacaoCollection() {
         return doacaoCollection;
     }
@@ -166,6 +171,7 @@ public class Organizacao implements Serializable {
         this.doador = doador;
     }
 
+    @XmlTransient
     public Collection<Noticia> getNoticiaCollection() {
         return noticiaCollection;
     }

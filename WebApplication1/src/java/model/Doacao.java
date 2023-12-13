@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,6 +28,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "doacao")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Doacao.findAll", query = "SELECT d FROM Doacao d"),
     @NamedQuery(name = "Doacao.findByDataDoacao", query = "SELECT d FROM Doacao d WHERE d.dataDoacao = :dataDoacao"),
@@ -48,7 +50,7 @@ public class Doacao implements Serializable {
     @Column(name = "idDoacao")
     private Integer idDoacao;
     @JoinColumn(name = "doador_email", referencedColumnName = "email")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Doador doadorEmail;
     @JoinColumn(name = "organizacao_usuario_email", referencedColumnName = "usuario_email")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)

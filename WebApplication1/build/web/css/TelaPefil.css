@@ -3,518 +3,470 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-  --header-height: 3.5rem;
+    --header-height: 3.5rem;
 
-  /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  --black-color: hsl(220, 24%, 12%);
-  --black-color-light: hsl(220, 24%, 15%);
-  --black-color-lighten: hsl(220, 20%, 18%);
-  --white-color: #fff;
-  --body-color: hsl(220, 100%, 97%);
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --black-color: hsl(220, 24%, 12%);
+    --black-color-light: hsl(220, 24%, 15%);
+    --black-color-lighten: hsl(220, 20%, 18%);
+    --white-color: #fff;
+    --body-color: hsl(220, 100%, 97%);
 
-  /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "Montserrat", sans-serif;
-  --normal-font-size: .938rem;
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Montserrat", sans-serif;
+    --normal-font-size: .938rem;
 
-  /*========== Font weight ==========*/
-  --font-regular: 400;
-  --font-semi-bold: 600;
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-semi-bold: 600;
 
-  /*========== z index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
 }
 
 /*========== Responsive typography ==========*/
 @media screen and (min-width: 1024px) {
-  :root {
-    --normal-font-size: 1rem;
-  }
+    :root {
+        --normal-font-size: 1rem;
+    }
 }
 
 /*=============== BASE ===============*/
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html {
-  height: 500vh;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  
+    height: 500vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
 
 }
 
 body {
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  background-color: rgb(233, 234, 236);
- 
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: rgb(233, 234, 236);
+
 }
 
 ul {
-  list-style: none;
-  /* Color highlighting when pressed on mobile devices */
-  /*-webkit-tap-highlight-color: transparent;*/
+    list-style: none;
+    /* Color highlighting when pressed on mobile devices */
+    /*-webkit-tap-highlight-color: transparent;*/
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 
 
 .container_perfil{
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
 .perfil{
-  
-  align-items: center;
-  width: 100%;
-  height: 550px;
-  background-color: rgba(204, 50, 50, 0.938);
-  margin-top: -120px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    align-items: center;
+    width: 100%;
+    height: 550px;
+    background-color: rgba(204, 50, 50, 0.938);
+    margin-top: -120px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .elementos{
- align-items: center;
- padding: 10px;
+    align-items: center;
+    padding: 10px;
 }
 .perfil_org {
-  padding-top:10px;
-  margin-top: 100px;
-  margin-right: 700px;
-  text-align: center;
-  align-items: start;
+    padding-top:10px;
+    margin-top: 100px;
+    margin-right: 700px;
+    text-align: center;
+    align-items: start;
 }
 .perfil_org h2{
-  font-size: 20px;
-  color: #fff;
+    font-size: 20px;
+    color: #fff;
 }
 .perfil_sec{
-  margin-top: -260px;
-  margin-left: 900px;
-  text-align: center;
-  align-items: start;
+    margin-top: -260px;
+    margin-left: 900px;
+    text-align: center;
+    align-items: start;
 }
 .perfil_sec img{
-  margin-top: 20px;
-  width: 400px;
-  /* ajuste o valor conforme necessário */
-  height: auto;
-  /* Isso manterá a proporção original da imagem */
-  border-radius: 20px;
-  padding-right: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 400px;
+    /* ajuste o valor conforme necessário */
+    height: auto;
+    /* Isso manterá a proporção original da imagem */
+    border-radius: 20px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .perfil_org img{
-  margin-top: 120px;
-  width: 200px;
-  /* ajuste o valor conforme necessário */
-  height: 200px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 120px;
+    width: 200px;
+    /* ajuste o valor conforme necessário */
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .opcoes_perfil {
-  display: flex;
-  flex-direction: column; /* Alterado para coluna para empilhar os botões verticalmente */
-  align-items: center; /* Centraliza os botões horizontalmente */
-  margin-top: -150px;
-  margin-right: 500px;
+    display: flex;
+    flex-direction: column; /* Alterado para coluna para empilhar os botões verticalmente */
+    align-items: center; /* Centraliza os botões horizontalmente */
+    margin-top: -150px;
+    margin-right: 500px;
 }
 
 .botao_perfil {
-  background-color: #43d348;
-  color: #fff;
-  padding: 10px 5px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 10px; /* Espaçamento inferior entre os botões */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #43d348;
+    color: #fff;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px; /* Espaçamento inferior entre os botões */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .botao_perfil:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 .org_inf{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
 }
 .org_inf h2{
-  font-size: 20px;
-  color:#fff;
+    font-size: 20px;
+    color:#fff;
 }
 
 .title_not{
-  
-  color: #4f8aa1;
-  text-align: start;
-  margin-top: 3%;
-  font-size: 40px;
+
+    color: #4f8aa1;
+    text-align: start;
+    margin-top: 3%;
+    font-size: 40px;
 
 }
 .missao{
-  width: 50%;
-  margin-top: 50px;
-  margin-left: 10%;
-  font-size: 18px;
-  line-height: 25px;
-  color: #fff;
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 10%;
+    font-size: 18px;
+    line-height: 25px;
+    color: #fff;
 
 
 }
 .background{
-  background-image: url(missão.jpg);
-  background-size: cover;
-  background-position: center;
-  margin-top: 20px;
-  width: 800px;
-  height: 500px;
-  border-radius: 20px;
-  padding-right: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+    background-image: url(missão.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
 }
 .container-missao{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
 }
 .missao-org{
-  width: 50%;
-  float: left;
-  margin-right: 10%;
+    width: 50%;
+    float: left;
+    margin-right: 10%;
 }
 .missao h1{
-  color: #3c338d;
+    color: #3c338d;
 }
 .missao-org p{
-  font-size: 18px;
-  color: #000000;
+    font-size: 18px;
+    color: #000000;
 }
 
 .slider-container {
-  height: 100vh;
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 500px;
-  overflow: hidden;
- 
+    height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 500px;
+    overflow: hidden;
+
 }
 
 .slider {
-  display: flex;
-  transition: transform 0.5s;
+    display: flex;
+    transition: transform 0.5s;
 }
 
 .card__institute {
-  height: 500px;
-  width: 300px;
-  margin: 0 10px;
-  border: 2px solid #6d7fa5;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  background-color: #e90c0c94;
-  margin-top: 10px;
+    height: 550px;
+    width: 300px;
+    margin: 0 10px;
+    border: 2px solid #6d7fa5;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #e90c0c94;
+    margin-top: 10px;
 }
 .card__news {
-  height: auto;
-  width: 300px;
-  margin: 0 10px;
-  border: 2px solid #e90c0c94;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  background-color: #6d7fa5;
-  margin-top: 5px;
+    height: auto;
+    width: 300px;
+    margin: 0 10px;
+    border: 2px solid #e90c0c94;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #6d7fa5;
+    margin-top: 5px;
 }
 .card__news img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 .card__institute img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 .card__news h2 {
-  font-size: 18px;
-  color: #ffffff;
+    font-size: 18px;
+    color: #ffffff;
 }
 
 .card__news p {
-  font-size: 14px;
-  color: #eeeeee;
+    font-size: 14px;
+    color: #eeeeee;
 }
 
 .card__institute h2 {
-  font-size: 18px;
-  color: #f3f3f3;
+    font-size: 18px;
+    color: #f3f3f3;
 }
 
 .card__institute p {
-  font-size: 14px;
-  color: #e4e4e4;
+    font-size: 14px;
+    color: #e4e4e4;
 }
 .button__card {
-  
-  height: 50px;
-  width: 75px;
-  border: 2px solid #ffffff;
-  border-radius: 10px;
-  background-color: transparent;
-  cursor: pointer;
-  text-align: center; 
+
+    height: 50px;
+    width: 75px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
 }
 .button__card a{
-  color: #fff;
-  font-size: 20px;
-  text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
 }
 .button__card:hover{
-  background-color: rgb(212, 18, 212);
-  transition: all 1s ease;
+    background-color: rgb(212, 18, 212);
+    transition: all 1s ease;
 }
 
 .slider-buttons{
-  flex: 0 0 300px;
-  margin: 0 10px;
-  padding-top: 5%;
- 
-  
+    flex: 0 0 300px;
+    margin: 0 10px;
+    padding-top: 5%;
+
+
 }
 .prev-button{
-  height: 50px;
-  width: 50px;
-  border: 2px solid #d309097a;
-  border-radius: 20px;
-  background-color: transparent;
-  color: rgb(223, 114, 114);
-  font-size: 20px;
-  cursor: pointer;
- 
+    height: 50px;
+    width: 50px;
+    border: 2px solid #d309097a;
+    border-radius: 20px;
+    background-color: transparent;
+    color: rgb(223, 114, 114);
+    font-size: 20px;
+    cursor: pointer;
+
 
 
 }
 .next-button{
-  height: 50px;
-  width: 50px;
-  border: 2px solid #0906a07e;
-  border-radius: 20px;
-  background-color: transparent;
-  color: rgb(140, 132, 209);
-  font-size: 20px;
-  cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border: 2px solid #0906a07e;
+    border-radius: 20px;
+    background-color: transparent;
+    color: rgb(140, 132, 209);
+    font-size: 20px;
+    cursor: pointer;
 
 }
 .prev-button:hover {
-  background-color: rgb(140, 132, 209);
-  color: rgb(255, 255, 255);
-  transition: all 1s ease;
+    background-color: rgb(140, 132, 209);
+    color: rgb(255, 255, 255);
+    transition: all 1s ease;
 }
 
 .next-button:hover {
-  background-color: rgb(223, 114, 114);
-  color: rgb(255, 255, 255);
-  transition: all 1s ease;
+    background-color: rgb(223, 114, 114);
+    color: rgb(255, 255, 255);
+    transition: all 1s ease;
 }
 
 
 .donate-card {
-  height: 200px;
-  width: 300px;
-  border: 1px solid #ff4d4d; /* Cor vermelha para o card de doação */
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); /* Sombra vermelha para o card de doação */
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-top: -500px;
-  margin-left: 70%;
- 
+    height: 200px;
+    width: 300px;
+    border: 1px solid #ff4d4d; /* Cor vermelha para o card de doação */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); /* Sombra vermelha para o card de doação */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: -500px;
+    margin-left: 70%;
+
 }
 
 .donate-card h2 {
-  
-  color: #ff4d4d; /* Cor vermelha para o título do card de doação */
+
+    color: #ff4d4d; /* Cor vermelha para o título do card de doação */
 }
 
 /* Estilos para o botão de doação */
 .donate-button {
-  background-color: #ff4d4d; /* Cor vermelha para o botão de doação */
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
+    background-color: #ff4d4d; /* Cor vermelha para o botão de doação */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
 }
 
 .donate-button a {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 /* Estilos para o botão de navegação do slider */
 .slider-buttons button {
-  background-color: #ddd;
-  border: none;
-  color: #555;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #ddd;
+    border: none;
+    color: #555;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 
 
 
 footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  margin-top: 250vh;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 250vh;
 }
 
 .rodape-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .informacoes,
 .links-rapidos,
 .redes-sociais {
-  flex: 1;
-  margin: 0 20px;
+    flex: 1;
+    margin: 0 20px;
 }
 
 h3 {
-  border-bottom: 1px solid #fff;
-  padding-bottom: 5px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
 }
 
 p, ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .direitos {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 .direitos img{
-  margin-top: 20px;
-  width: 200px;
-  /* ajuste o valor conforme necessário */
-  height: auto;
+    margin-top: 20px;
+    width: 200px;
+    /* ajuste o valor conforme necessário */
+    height: auto;
 }
 .notice{
-  height: 100vh;
-  margin-top: 1200px;
-  
-}
-#noticia_card1 {
-  width: 1000px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-top: 300px;
-  margin-left: 500px;
+    height: 100vh;
+    margin-top: 1200px;
+
 }
 
 #noticia_card1 h2 {
-  font-size: 30px;
-  color: #333;
+    font-size: 30px;
+    color: #333;
 }
 
 #noticia_card1 p {
-  color: #666;
+    color: #666;
 }
 
 #noticia_card1 img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-/* Card 2*/
-#noticia_card2 {
-  width: 1000px;
-  background-color: #395a96;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-top: 300px;
-  margin-left: 500px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-#noticia_card2 h2 {
-  font-size: 30px;
-  color: #e6e6e6;
+
+#noticia_card1 {
+    width: 1000px;
+    height: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 300px;
+    margin-left: 500px;
 }
 
-#noticia_card2 p {
-  color: #f3f3f3;
-}
-
-#noticia_card2 img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-/* Card 3*/
-#noticia_card3 {
-  width: 1000px;
-  background-color: #cc4444;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-top: 300px;
-  margin-left: 500px;
-}
-
-#noticia_card3 h2 {
-  font-size: 30px;
-  color: #d1d1d1;
-}
-
-#noticia_card3 p {
-  color: #eeeeee;
-}
-
-#noticia_card3 img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.iframe-container {
+    margin-top: 50px;
+    width: 100%;
+    height: 5000px; /* ou outra altura desejada */
+    border: none;
 }

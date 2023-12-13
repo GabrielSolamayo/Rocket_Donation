@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "endereco")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e"),
     @NamedQuery(name = "Endereco.findByIdendereco", query = "SELECT e FROM Endereco e WHERE e.idendereco = :idendereco"),
@@ -75,9 +77,10 @@ public class Endereco implements Serializable {
         this.cep = cep;
         this.complemento = complemento;
     }
-    
-    
 
+    
+    
+    
     public Integer getIdendereco() {
         return idendereco;
     }

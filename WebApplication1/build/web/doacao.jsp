@@ -1,24 +1,50 @@
-<html lang="pt-BR">
+
+<%@page import="model.Organizacao"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="pt_br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Doa��o</title>
-    <link rel="stylesheet" href="css/doacao.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="doacao.js"></script>
+  <title>Doacao</title>
+  <link rel="stylesheet" href="./css/doacao.css">
 </head>
+
 <body>
-     <header >
-        <%@ include file="menuu.jsp"%>
+    <%
+        String emailOrg = (String)request.getAttribute("emailOrg");
+        // Agora você pode usar a variável pkOrga conforme necessário na sua página JSP
+    %>
+
+        <header style="padding-top: 100px">
+            <%@ include file="menuu.jsp" %>
         </header>
-    <div class="doacao">
-        <div id="content-container">
-            <h1>Chave Pix</h1>
-            <div id="qrcode-container">
-                <div id="qrcode"></div>
-                <button id="generateButton">Gerar Novo</button>
-            </div>
-        </div>
+
+  <div class="content">
+
+    <div id="sla">
+      <h1>Obrigado pela doacao !!</h1>
+      <section class="doacao">
+        <h2>Qualquer quantia ja faz a diferenca ;p</h2>
     </div>
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-    <script src="js/doacao.js"></script>
+    <div id="outraDiv">
+      <!-- ... (seu cï¿½digo existente) ... -->
+      <section class="valorDoacao">
+        <h2>Valor da doacao</h2>
+        <input type="number" id="valorDoacao" name="valorDoacao" placeholder="R$ 0,00">
+        <input type="hidden" name="pkOrg" value="${emailOrg}">
+        <a href="controle?flag=doacaoSemLog"><button class="botao-doar" type="submit">Doar <i class="ri-heart-add-line"></i></button></a>
+      </section>
+
+      <img
+        src="https://www.gov.br/inss/pt-br/centrais-de-conteudo/imagens/qr-code-novo-fw-300x300-png/@@images/image.png"
+        alt="QR">
+
+    </div>
+  </div>
 </body>
 </html>

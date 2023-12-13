@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,6 +28,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "noticia")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Noticia.findAll", query = "SELECT n FROM Noticia n"),
     @NamedQuery(name = "Noticia.findByIdNoticia", query = "SELECT n FROM Noticia n WHERE n.idNoticia = :idNoticia"),
@@ -35,7 +37,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Noticia.findByData", query = "SELECT n FROM Noticia n WHERE n.data = :data"),
     @NamedQuery(name = "Noticia.findByImgUrl", query = "SELECT n FROM Noticia n WHERE n.imgUrl = :imgUrl"),
     @NamedQuery(name = "Noticia.findByEmailOrganizacao", query = "SELECT n FROM Noticia n WHERE n.fkEmail.usuarioEmail = :email")
-})
+    })
 public class Noticia implements Serializable {
 
     private static final long serialVersionUID = 1L;

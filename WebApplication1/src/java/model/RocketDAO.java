@@ -402,6 +402,30 @@ public class RocketDAO {
         }
     }
     
+    public boolean verificarCadastroDoacao(Doacao doacao){
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(doacao);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().rollback();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
+    }
+    
+    public void cadastroDoacao(Doacao doacao) {
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(doacao);
+            manager.getTransaction().commit();
+        } catch (NoResultException e) {
+        }
+    }
+    
     
     
 }

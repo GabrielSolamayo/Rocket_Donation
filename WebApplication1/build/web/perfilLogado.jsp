@@ -1,10 +1,9 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@page import="model.Noticia"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -36,8 +35,8 @@
                         <h2>${doador.nome}</h2>
                         <div class="opcoes_perfil">
                             <a href="controle?flag=editarPerfilOrg&email=${doador.email}&enderecoID=${endereco.idendereco}"><button class="botao_perfil"><i class="ri-edit-2-line"></i>Editar Perfil</button></a>
-                            <a href="controle?flag=historico&email=${doador.email}"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Historico</button></a>
-                            <a href="controle?flag=publicarNot&email=${doador.email}"><button class="botao_perfil"><i class="ri-draft-fill"></i>Publicar Noticia</button></a>
+                            <a href="controle?flag=historico&email=${doador.email}"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Histï¿½rico</button></a>
+                            <button class="botao_perfil"><i class="ri-draft-fill"></i>Publicar Noticia</button>
                         </div>
                     </div>
                     <div class="perfil_sec">
@@ -85,60 +84,49 @@
 
                     <!-- Conteï¿½do do segundo slider (Notï¿½cias) -->
                     <c:forEach items="${listaNoticia}" var="lista">
-
-                        <div class="card__news card__news-2" >
-
-                            <img src="${lista.getImgUrl()}" alt="Instituicao 1">
+                        <div class="card__news card__news-2">
+                            <img src="${lista.getImgUrl()}" alt="foto do perfil Instituicao">
                             <h2>${lista.getTitulo()}</h2>
-                            <p>${lista.getDescricao()}</p> <button class="button__card">
-                                <a href="controle?flag=noticiaId&idNoticia=${lista.getIdNoticia()}" ><i class="ri-book-read-fill"></i>Leia</a>
+                            <p>
+                                <c:choose>
+                                    <c:when test="${fn:length(lista.getDescricao()) > 100}">
+                                        ${fn:substring(lista.getDescricao(), 0, 270)}...
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${lista.getDescricao()}
+                                    </c:otherwise>
+                                </c:choose>
+                            </p>
+                            <button class="button__card">
+                                <a href="controle?flag=noticiaId&idNoticia=${lista.getIdNoticia()}" target="conteudo">
+                                    <i class="ri-book-read-fill"></i>Leia
+                                </a>
                             </button>
-                            <p> ${lista.getIdNoticia()}</p>
-                            <!-- Conteï¿½do da notï¿½cia 1 -->
+                            <p>${lista.getIdNoticia()}</p>
                         </div>
                     </c:forEach>
                 </div>
-
-
             </div><!-- Fim do segundo slider -->    
         </div><!--conatiner_perfil-->
+
         <div class="notice" >
             <section id="noticia_card1" class="noticia">
-                <h2>Tï¿½tulo da Notï¿½cia 1</h2>
-                <p>Data da Publicaï¿½ï¿½o: 10 de dezembro de 2023</p>
 
-                <!-- Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma -->
-                <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">
+                <!--                <h2>Titulo da noticia 1</h2>
+                                <p>Data da Publicacao: 10 de dezembro de 2023</p>
+                
+                                Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma 
+                                <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">-->
+                <div id="teste">
+                    <iframe src="iframe.jsp" name="conteudo" class="iframe-container"></iframe>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, fugiat impedit hic atque praesentium maiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis ut mollitia quod deserunt atque? Rerum porro saepe nesciunt. Quas unde aspernatur voluptates animi? Rem tempora voluptatum, earum eaque sed tempore.  Vel placeat quaerat illum, sunt reiciendis cupiditate velit repellendus, accusantium laudantium hic odit, nostrum esse.
-                </p>
+                </div>
+
+
             </section>
-            <section id="noticia_card2" class="noticia" >
-                <h2>Tï¿½tulo da Notï¿½ci 2</h2>
-                <p>Data da Publicaï¿½ï¿½o: 10 de dezembro de 2023</p>
-
-                <!-- Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma -->
-                <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, fugiat impedit hic atque praesentium maiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis ut mollitia quod deserunt atque? Rerum porro saepe nesciunt. Quas unde aspernatur voluptates animi? Rem tempora voluptatum, earum eaque sed tempore.  Vel placeat quaerat illum, sunt reiciendis cupiditate velit repellendus, accusantium laudantium hic odit, nostrum esse.
-                </p>
-            </section>
-            <section id="noticia_card3" class="noticia" >
-                <h2>Tï¿½tulo da Notï¿½cia 3</h2>
-                <p>Data da Publicaï¿½ï¿½o: 10 de dezembro de 2023</p>
-
-                <!-- Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma -->
-                <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, fugiat impedit hic atque praesentium maiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis ut mollitia quod deserunt atque? Rerum porro saepe nesciunt. Quas unde aspernatur voluptates animi? Rem tempora voluptatum, earum eaque sed tempore.  Vel placeat quaerat illum, sunt reiciendis cupiditate velit repellendus, accusantium laudantium hic odit, nostrum esse.
-                </p>
-            </section>
-            <!-- Adicione mais divs com a classe "noticia" para cada notï¿½cia adicional -->
 
         </div><!--Notice-->
+
         <footer>
             <div class="rodape-container">
                 <div class="informacoes">
@@ -152,9 +140,9 @@
                 <div class="links-rapidos">
                     <h3>Links Rï¿½pidos</h3>
                     <ul>
-                        <li><a href="#home"><i class="ri-pages-line"></i> Pagina Inicial</a></li>
-                        <li><a href="#Sobre"><i class="ri-rocket-fill"></i> Sobre Nos</a></li>
-                        <li><a href="#Organizaï¿½ï¿½o"><i class="ri-home-heart-fill"></i> Organizacoes</a></li>
+                        <li><a href="#home"><i class="ri-pages-line"></i> Pï¿½gina Inicial</a></li>
+                        <li><a href="#Sobre"><i class="ri-rocket-fill"></i> Sobre Nï¿½s</a></li>
+                        <li><a href="#Organizaï¿½ï¿½o"><i class="ri-home-heart-fill"></i> Organizaï¿½ï¿½es</a></li>
                         <li><a href="#Noticia"><i class="ri-file-list-3-line"></i> Noticias</a></li>
                     </ul>
                 </div>
@@ -178,12 +166,5 @@
         </footer>
         <!--=============== Carrossel ===============-->
         <script src="./scripts/carrosselPerfil.js"></script>
-        <script src="<c:url value="./scripts/menuScript.js" />"></script>
-        <script src="<c:url value="./scripts/indexScript.js" />"></script>
-        <script src="<c:url value="./scripts/OrgApi.js" />"></script>
-        <script src="<c:url value="./scripts/noticiaApi.js" />"></script>
-
-
     </body>
-
 </html>

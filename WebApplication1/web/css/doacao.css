@@ -1,47 +1,225 @@
 body {
-    background-color: #dbdbdb; /* Fundo azul claro */
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #d8d4cb;
+  margin-bottom: 70px;
+
 }
 
-html {
-    overflow: hidden;
+iframe {
+  width: 100%;
+  height: 32%;
+  border: 0;
+  background-color: #d8d4cb;
 }
 
-.doacao {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
 }
 
-#content-container {
-    width: 300px;
-    background-color: #fff; /* Cor de fundo da área de conteúdo */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+header nav ul {
+  list-style: none;
+  display: flex;
 }
 
-#qrcode-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+header nav ul li {
+  margin-left: 20px;
 }
 
-#qrcode {
-    margin-top: 10px;
+#profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-right: auto;
 }
 
-#generateButton {
-    margin-top: 10px; /* Adicionado para dar espaço entre o QR code e o botão */
-    padding: 10px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
+#login-btn {
+  margin-left: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #007BFF;
+  color: #fff;
+  cursor: pointer;
+}
+
+.content {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: calc(100vh - 80px);  */
+
+}
+
+h2{
+  text-align: center;
+}
+
+
+#sla {
+  width: 350px;
+  /* Defina o tamanho desejado */
+  height: 400px;
+  /* Mesmo tamanho para altura */
+  background: #B74141;
+  border: 2px solid #002B5B;
+  padding: 50px;
+  /* Ajuste o padding se necessário */
+  box-sizing: border-box;
+  /* Isso evita que o padding adicione à largura/altura total */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 15px;
+}
+
+#sla>span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#outraDiv {
+  width: 600px;
+  /* Tamanho desejado */
+  height: 400px;
+  background: #d8d4cb;
+  /* Cor diferente para distinguir */
+  border: 2px solid #002B5B;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#outraDiv h1 {
+  margin-top: 35px;
+  /* color: #002B5B; */
+  color: #002B5B;
+
+
+}
+
+#login-cad {
+  margin-top: 50px;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  background: #B74141;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.input-row {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #B74141;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.campo {
+  border: 2px solid #f5f5f5;
+  background-color: #fff;
+  height: 50%;
+  border-radius: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.dadosCartao input[name="codigoSeguranca"] {
+  width: 35px;
+  /* Largura do campo */
+  font-size: 14px;
+  /* Tamanho da fonte */
+}
+
+img {
+
+  width: 180px;
+  /* Largura da imagem */
+  /* Borda de 2 pixels sólida, cor #333 */
+  border-radius: 5px;
+  /* Borda arredondada com raio de 10 pixels */
+  margin-top: 0px;
+  align-items: center;
+
+}
+
+.botao-doar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  /* Bordas arredondadas */
+  background-color: #B74141;
+  /* Cor vermelha */
+  color: #fff;
+  /* Letras brancas */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 1370px) {
+  /* Estilos CSS para telas maiores que 1200 pixels de largura */
+
+  iframe {
+    width: 100%;
+    height: 25%;
+    border: 0;
+    background-color: #d8d4cb;
+  }
+
+  body {
+    margin-bottom: 0px;
+  }
 }

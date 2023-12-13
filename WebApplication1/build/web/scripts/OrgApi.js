@@ -42,7 +42,7 @@ function carregarInstituicoes() {
                 link.addEventListener('click', function (event) {
                     event.preventDefault()
                     var instituicaoId = instituicao.id; // Supondo que 'id' é o nome do atributo que contém o ID da instituição
-                    window.location.href = 'TelaPerfil.jsp?id=' + instituicaoId; // Redireciona para a página TelaPerfil.jsp com o ID da instituição
+                    window.location.href = 'controle?flag=orgSelecionado&email=' + instituicaoId; // Redireciona para a página TelaPerfil.jsp com o ID da instituição
                 });
 
                 button.appendChild(link);
