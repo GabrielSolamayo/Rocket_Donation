@@ -5,7 +5,9 @@
 package model;
 
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -321,6 +323,31 @@ public class RocketDAO {
         } catch (Exception e) {
             // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
             throw new  NullPointerException("");
+        }
+    }
+    
+     public List<Noticia> listarNoticia() {
+        try {
+            connect();
+            TypedQuery<Noticia> query = manager.createNamedQuery("Noticia.findAll", Noticia.class);
+
+            List<Noticia> list = query.getResultList().
+                    stream().sorted(Comparator.comparing(Noticia::getData).reversed())
+                    .collect(Collectors.toList());
+
+            return list;
+        } catch (NullPointerException ex) {
+            return null;
+        }
+    }
+
+    public List<Noticia> findNoticiasByEmailOrganizacao(String email) {
+        try {
+            TypedQuery<Noticia> query = manager.createNamedQuery("Noticia.findByEmailOrganizacao", Noticia.class);
+            query.setParameter("email", email);
+            return query.getResultList();
+        } catch (Exception e) {
+            return null;
         }
     }
     

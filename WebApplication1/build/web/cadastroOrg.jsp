@@ -19,7 +19,7 @@
 
     <div id="sla">
       <div>
-        <h1>Cadastro Organização</h1>
+        <h1>Cadastro Organizacao</h1>
       </div>
       <h1><i class="ri-home-heart-line"></i></h1>
       <h1>Bem vindo de volta!</h1>
@@ -32,8 +32,8 @@
       <form id="cadastrar-form" method="POST" action="controle">
         <input type="hidden" name="flag" value="cadastroOrg">
         <div class="input-row">
-          <label for="nomeOrg">Nome da Organização <i class="ri-home-heart-line"></i></label>
-          <input type="text" id="nomeOrg" name="nomeOrg" placeholder="Nome da Organização" required>
+          <label for="nomeOrg">Nome da Organizacao <i class="ri-home-heart-line"></i></label>
+          <input type="text" id="nomeOrg" name="nomeOrg" placeholder="Nome da Organizacao" required>
         </div>
         
         <div class="input-row">
@@ -42,18 +42,18 @@
         </div>
         <div class="input-row">
           <label for="emailOrg">E-mail <i class="ri-mail-line"></i></label>
-          <input type="email" id="emailOrg" name="emailOrg" placeholder="ex@.com" required>
+          <input type="email" id="emailOrg" name="emailOrg" placeholder="exemplo@exem.com" required>
         </div>
         
         <div class="input-row">
-          <label for="categoria">Categoria da organização</label>
+          <label for="categoria">Categoria da organizacao</label>
           <select id="categoria" name="categoria" required>
-            <option value="" disabled selected hidden>Escolha uma opção</option>
+            <option value="" disabled selected hidden>Escolha uma opcao</option>
             <option value="cultura">Cultura</option>
             <option value="racismo">Anti-Racismo</option>
             <option value="meioAmbiente">Meio Ambiente</option>
-            <option value="educacao">Educação</option>
-            <option value="saude">Saúde</option>
+            <option value="educacao">Educacao</option>
+            <option value="saude">Saude</option>
             <!-- Adicione outras opcoes aqui -->
           </select>
         </div>
@@ -80,8 +80,8 @@
           <input class="campo" type="password" id="senha" name="senha" placeholder="Senha" required>
         </div>
         <div class="input-row">
-          <label for="agenciaConta">Agência <i class="ri-bank-line"></i></label>
-          <input type="text" id="agenciaConta" name="agenciaConta" placeholder="Agência" required>
+          <label for="agenciaConta">Agencia <i class="ri-bank-line"></i></label>
+          <input type="text" id="agenciaConta" name="agenciaConta" placeholder="Agencia" required>
         </div>
         <div class="input-row">
           <label for="confirmarSenha">
@@ -92,15 +92,15 @@
         </div>
         
         <div class="input-row">
-          <label for="site">Descrição breve do Organizacao <i class=""></i></label>
-          <input type="text" id="site" name="descOrg" placeholder="Esta organização..." required>
+          <label for="site">Descricao breve do Organizacao <i class=""></i></label>
+          <input type="text" id="site" name="descOrg" placeholder="Esta organizacao..." required>
         </div>
         <div class="input-row">
-          <label for="numeroConta">Conta Bancária <i class="ri-bank-line"></i></label>
+          <label for="numeroConta">Conta Bancaria <i class="ri-bank-line"></i></label>
           <input type="text" id="numeroConta" name="numeroConta" placeholder="Conta" required>
         </div>
         <div class="input-row">
-          <label for="rua">Endereço <i class="ri-home-4-line"></i> </label>
+          <label for="rua">Endereco <i class="ri-home-4-line"></i> </label>
           <input type="text" id="rua" name="rua" placeholder="Rua / Avenida" required>
         </div>
         <div class="input-row">
@@ -108,15 +108,15 @@
           <input type="text" id="chavePix" name="chavePix" placeholder="PIX" required>
         </div>
         <div class="input-row">
-          <label for="numero">Número <i class="ri-home-4-line"></i> </label>
-          <input type="text" id="numero" name="numero" placeholder="N" required>
+          <label for="numero">Numero <i class="ri-home-4-line"></i> </label>
+          <input type="text" id="numero" name="numero" placeholder="Num" required>
         </div>
         <div class="input-row">
           <label for="numeroConta">Codigo do Banco <i class="ri-bank-line"></i></label>
           <input type="text" id="numeroConta" name="codBanco" placeholder="Cod " required maxlength="3">
         </div>
         <div class="input-row">
-          <label for="missao">Missão da Organização <i class="ri-home-heart-line"></i></label>
+          <label for="missao">Missão da Organizacao <i class="ri-home-heart-line"></i></label>
           <textarea id="missao" name="missao" required></textarea>
         </div>
         <div class="input-row">

@@ -25,7 +25,7 @@
             </div>
             <h1><i class="ri-user-add-line"></i></h1>
             <h1>Bem vindo de volta</h1>
-            <span>Se já possuir uma conta, faça login.</span>
+            <span>Se ja possuir uma conta, faca login.</span>
             <button id="login-cad"><a href="login.jsp">Login</a></button>
         </div>
 
@@ -64,14 +64,14 @@
 
                 <div class="input-row">
                     <label for="numero">
-                        <p>Número <i class="ri-home-4-line"></i></p>
+                        <p>Numero <i class="ri-home-4-line"></i></p>
                     </label>
-                    <input type="text" id="numero" name="numero" placeholder="N�" required>
+                    <input type="text" id="numero" name="numero" placeholder="Num" required>
                 </div>
 
                 <div class="input-row">
                     <label for="rua">
-                        <p>Endereço <i class="ri-home-4-line"></i> </p>
+                        <p>Endereco <i class="ri-home-4-line"></i> </p>
                     </label>
                     <input type="text" id="Endereco" name="endereco" placeholder="Rua / Avenida" required>
                 </div>

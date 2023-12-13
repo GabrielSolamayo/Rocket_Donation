@@ -29,7 +29,7 @@
             <h2>${doador.nome}</h2>
             <div class="opcoes_perfil">
                <a href="controle?flag=editarPerfilOrg&email=${doador.email}&enderecoID=${endereco.idendereco}"><button class="botao_perfil"><i class="ri-edit-2-line"></i>Editar Perfil</button></a>
-               <a href="controle?flag=historico&email=${doador.email}"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Hist�rico</button></a>
+               <a href="controle?flag=historico&email=${doador.email}"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Historico</button></a>
                <button class="botao_perfil"><i class="ri-draft-fill"></i>Publicar Noticia</button>
            </div>
          </div>
@@ -47,7 +47,7 @@
   
          </div><!--perfil-->
          <div class="missao">
-          <h1><i class="ri-hearts-fill"></i>Miss�o</h1>
+          <h1><i class="ri-hearts-fill"></i>Missao</h1>
          <div class="background">
          <div class="container-missao">
          <div class="missao-org">
@@ -61,7 +61,7 @@
       <div class="card_donat">
 
       
-      <h2>Fa�a sua doa��o</h2>
+      <h2>Faca sua doacao</h2>
       <p>Ajude-nos a continuar nosso trabalho</p>
       <button class="donate-button">
           <a href="#" ><i class="ri-heart-fill"></i>Doar</a>
@@ -69,7 +69,7 @@
    </div>
   </div>
          <div class="slider-container">
-            <h1 class="title_not">Not�cias</h1>
+            <h1 class="title_not">Noticias</h1>
             <div class="slider-buttons">
                 <button class="prev-button prev-button-2"><i class="ri-arrow-left-line"></i></button>
                 <button class="next-button next-button-2"><i class="ri-arrow-right-line"></i></button>
@@ -162,9 +162,9 @@
         <div class="links-rapidos">
           <h3>Links R�pidos</h3>
           <ul>
-            <li><a href="#home"><i class="ri-pages-line"></i> P�gina Inicial</a></li>
-            <li><a href="#Sobre"><i class="ri-rocket-fill"></i> Sobre N�s</a></li>
-            <li><a href="#Organiza��o"><i class="ri-home-heart-fill"></i> Organiza��es</a></li>
+            <li><a href="#home"><i class="ri-pages-line"></i> Pagina Inicial</a></li>
+            <li><a href="#Sobre"><i class="ri-rocket-fill"></i> Sobre Nos</a></li>
+            <li><a href="#Organiza��o"><i class="ri-home-heart-fill"></i> Organizacoes</a></li>
             <li><a href="#Noticia"><i class="ri-file-list-3-line"></i> Noticias</a></li>
           </ul>
         </div>
