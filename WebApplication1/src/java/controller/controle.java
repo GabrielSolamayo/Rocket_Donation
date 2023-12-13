@@ -4,6 +4,7 @@
  */
 package controller;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -24,6 +25,7 @@ import model.ContaBancaria;
 import model.Doacao;
 import model.Doador;
 import model.Endereco;
+import model.Noticia;
 import model.Organizacao;
 import model.RocketDAO;
 
@@ -237,7 +239,12 @@ public class controle extends HttpServlet {
                 disp.forward(request, response);
                 
             }else if(doa.getUserType().equalsIgnoreCase("Instituicao")){
-                RequestDispatcher disp = request.getRequestDispatcher("perfilLogado.jsp");
+                
+                 RequestDispatcher disp = request.getRequestDispatcher("perfilLogado.jsp");
+
+                List<Noticia> listaNoticia = dao.findNoticiasByEmailOrganizacao(emailUsuario);
+
+                request.setAttribute("listaNoticia", listaNoticia);
                 disp.forward(request, response);
             }  
             
@@ -354,6 +361,38 @@ public class controle extends HttpServlet {
 
             RequestDispatcher disp = request.getRequestDispatcher("perfilDoador.jsp");
             disp.forward(request, response);
+            
+        } else if(flag.equalsIgnoreCase("publicarNot")){
+            String pkOrg = request.getParameter("email");
+            request.setAttribute("pkOrg", pkOrg);
+            RequestDispatcher disp = request.getRequestDispatcher("publicarNot.jsp");
+            disp.forward(request, response);
+        
+        } else if(flag.equalsIgnoreCase("postNoticia")){
+            String pkOrg = request.getParameter("pkOrg");
+            Organizacao org = dao.obterOrganizacaoPorEmail(pkOrg);
+            
+            Noticia noticia = new Noticia();
+            
+            Date dataAtual = new Date();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataFormatada = formato.format(dataAtual);
+                Date dataConvertida = formato.parse(dataFormatada);
+            noticia.setData(dataConvertida);
+            noticia.setDescricao(request.getParameter("conteudo"));
+            noticia.setImgUrl(request.getParameter("imagem"));
+            noticia.setTitulo(request.getParameter("titulo"));
+            noticia.setFkEmail(org);
+            
+            boolean resp = dao.verificarCadastroNoticia(noticia);
+            if(resp){
+                dao.cadastroNoticia(noticia);
+                mensagem = "Noticia publicada com sucesso! Obrigado por compartilhar.";
+                request.setAttribute("m", mensagem);
+                RequestDispatcher disp = request.getRequestDispatcher("publicarNotSUCESSO.jsp");
+                disp.forward(request, response);
+            }
+            
         }
     }
 

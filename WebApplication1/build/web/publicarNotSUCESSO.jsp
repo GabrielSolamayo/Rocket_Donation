@@ -40,9 +40,11 @@
 
             <button type="submit">Publicar</button>
             <!-- Apï¿½s o botï¿½o de envio -->
+            <p>${m}</p>
         </form>
     </div>
 </div><!--elementes-->
 </div><!--Background-->
+<script src="./scripts/pubulicarNot.js"></script>
 </body>
 </html>

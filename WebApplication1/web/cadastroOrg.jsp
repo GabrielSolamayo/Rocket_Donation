@@ -24,7 +24,7 @@
       <h1><i class="ri-home-heart-line"></i></h1>
       <h1>Bem vindo de volta!</h1>
 
-      <span>Se já possuir uma conta, faça login.</span>
+      <span>Se ja� possuir uma conta, faca login.</span>
       <button id="login-cad"><a href="login.jsp">Login</a></button>
     </div>
     <div id="outraDiv">

@@ -1,0 +1,47 @@
+body {
+    background-color: #dbdbdb; /* Fundo azul claro */
+}
+
+html {
+    overflow: hidden;
+}
+
+.doacao {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#content-container {
+    width: 300px;
+    background-color: #fff; /* Cor de fundo da área de conteúdo */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qrcode-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#qrcode {
+    margin-top: 10px;
+}
+
+#generateButton {
+    margin-top: 10px; /* Adicionado para dar espaço entre o QR code e o botão */
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}

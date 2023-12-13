@@ -1,3 +1,10 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="model.Noticia"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,7 +37,7 @@
             <div class="opcoes_perfil">
                <a href="controle?flag=editarPerfilOrg&email=${doador.email}&enderecoID=${endereco.idendereco}"><button class="botao_perfil"><i class="ri-edit-2-line"></i>Editar Perfil</button></a>
                <a href="controle?flag=historico&email=${doador.email}"><button class="botao_perfil"><i class="ri-phone-find-fill"></i>Ver Historico</button></a>
-               <button class="botao_perfil"><i class="ri-draft-fill"></i>Publicar Noticia</button>
+               <a href="controle?flag=publicarNot&email=${doador.email}"><button class="botao_perfil"><i class="ri-draft-fill"></i>Publicar Noticia</button></a>
            </div>
          </div>
          <div class="perfil_sec">
@@ -56,7 +63,7 @@
         </div><!--missao-->
       </div><!--Background-->
     </div>
-                       <!-- Card de Doa��o -->
+                       <!-- Card de Doaï¿½ï¿½o -->
     <div class="donate-card">
       <div class="card_donat">
 
@@ -75,78 +82,61 @@
                 <button class="next-button next-button-2"><i class="ri-arrow-right-line"></i></button>
             </div>
             <div class="slider slider-2">
-         
-                <!-- Conte�do do segundo slider (Not�cias) -->
-                <div class="card__news card__news-2" >
-                    <img src="pictures/santos.png" alt="Institui��o 1">
-                    <h2>Noticia 1</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem autem perspiciatis porro? Quia distinctio aliquam inventore, corrupti facere eos non similique soluta voluptatem aut, earum sapiente nostrum veritatis natus nisi.</p>
-                    <button class="button__card">
-                        <a href="#noticia_card1" ><i class="ri-book-read-fill"></i>Leia</a>
-                    </button>
-                    <!-- Conte�do da not�cia 1 -->
+
+                    <!-- Conteï¿½do do segundo slider (Notï¿½cias) -->
+                    <c:forEach items="${listaNoticia}" var="lista">
+
+                        <div class="card__news card__news-2" >
+
+                            <img src="${lista.getImgUrl()}" alt="Instituiï¿½ï¿½o 1">
+                            <h2>${lista.getTitulo()}</h2>
+                            <p>${lista.getDescricao()}</p> <button class="button__card">
+                                <a href="controle?flag=noticiaId&idNoticia=${lista.getIdNoticia()}" ><i class="ri-book-read-fill"></i>Leia</a>
+                            </button>
+                            <p> ${lista.getIdNoticia()}</p>
+                            <!-- Conteï¿½do da notï¿½cia 1 -->
+                        </div>
+                    </c:forEach>
                 </div>
-                <div class="card__news card__news-2">
-                    <img src="pictures/santos.png" alt="Institui��o 1">
-                    <h2>Noticia 2</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod amet non eum facere aliquid laboriosam molestiae ea odit, repudiandae exercitationem. Officiis voluptatem, eligendi repudiandae fugiat nobis quasi! Iusto, eos quibusdam.</p>
-                  <button class="button__card">
-                    <a href="#noticia_card2" ><i class="ri-book-read-fill"></i>Leia</a>
-                </button>
-                    <!-- Conte�do da not�cia 2 -->
-                </div>
-                <div class="card__news card__news-2">
-                  <img src="pictures/solidariedade.png" alt="Institui��o 1">
-                  <h2>Noticia 3</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod amet non eum facere aliquid laboriosam molestiae ea odit, repudiandae exercitationem. Officiis voluptatem, eligendi repudiandae fugiat nobis quasi! Iusto, eos quibusdam.</p>
-                <button class="button__card">
-                  <a href="#noticia_card3" ><i class="ri-book-read-fill"></i>Leia</a>
-              </button>
-                  <!-- Conte�do da not�cia 2 -->
-              </div>
-     
-                <!-- Adicione mais cards de not�cias aqui -->
-         
-            </div>
 
             
          </div><!-- Fim do segundo slider -->    
       </div><!--conatiner_perfil-->
       <div class="notice" >
       <section id="noticia_card1" class="noticia">
-         <h2>T�tulo da Not�cia 1</h2>
-         <p>Data da Publica��o: 10 de dezembro de 2023</p>
+         <h2>Tï¿½tulo da Notï¿½cia 1</h2>
+         <p>Data da Publicaï¿½ï¿½o: 10 de dezembro de 2023</p>
          
-         <!-- Voc� pode adicionar uma imagem se a not�cia tiver uma -->
-         <img src="pictures/Logo_oficial_-_MXS.png" alt="Descri��o da Imagem">
+         <!-- Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma -->
+         <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">
  
          <p>
              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, fugiat impedit hic atque praesentium maiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis ut mollitia quod deserunt atque? Rerum porro saepe nesciunt. Quas unde aspernatur voluptates animi? Rem tempora voluptatum, earum eaque sed tempore.  Vel placeat quaerat illum, sunt reiciendis cupiditate velit repellendus, accusantium laudantium hic odit, nostrum esse.
          </p>
      </section>
      <section id="noticia_card2" class="noticia" >
-      <h2>T�tulo da Not�ci 2</h2>
-      <p>Data da Publica��o: 10 de dezembro de 2023</p>
+      <h2>Tï¿½tulo da Notï¿½ci 2</h2>
+      <p>Data da Publicaï¿½ï¿½o: 10 de dezembro de 2023</p>
       
-      <!-- Voc� pode adicionar uma imagem se a not�cia tiver uma -->
-      <img src="pictures/Logo_oficial_-_MXS.png" alt="Descri��o da Imagem">
+      <!-- Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma -->
+      <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">
 
       <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, fugiat impedit hic atque praesentium maiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis ut mollitia quod deserunt atque? Rerum porro saepe nesciunt. Quas unde aspernatur voluptates animi? Rem tempora voluptatum, earum eaque sed tempore.  Vel placeat quaerat illum, sunt reiciendis cupiditate velit repellendus, accusantium laudantium hic odit, nostrum esse.
       </p>
   </section>
   <section id="noticia_card3" class="noticia" >
-   <h2>T�tulo da Not�cia 3</h2>
-   <p>Data da Publica��o: 10 de dezembro de 2023</p>
+   <h2>Tï¿½tulo da Notï¿½cia 3</h2>
+   <p>Data da Publicaï¿½ï¿½o: 10 de dezembro de 2023</p>
    
-   <!-- Voc� pode adicionar uma imagem se a not�cia tiver uma -->
-   <img src="pictures/Logo_oficial_-_MXS.png" alt="Descri��o da Imagem">
+   <!-- Vocï¿½ pode adicionar uma imagem se a notï¿½cia tiver uma -->
+   <img src="pictures/Logo_oficial_-_MXS.png" alt="Descriï¿½ï¿½o da Imagem">
 
    <p>
        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, fugiat impedit hic atque praesentium maiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis ut mollitia quod deserunt atque? Rerum porro saepe nesciunt. Quas unde aspernatur voluptates animi? Rem tempora voluptatum, earum eaque sed tempore.  Vel placeat quaerat illum, sunt reiciendis cupiditate velit repellendus, accusantium laudantium hic odit, nostrum esse.
    </p>
 </section>
-     <!-- Adicione mais divs com a classe "noticia" para cada not�cia adicional -->
+     <!-- Adicione mais divs com a classe "noticia" para cada notï¿½cia adicional -->
    
    </div><!--Notice-->
    <footer>
@@ -160,11 +150,11 @@
         </div>
     
         <div class="links-rapidos">
-          <h3>Links R�pidos</h3>
+          <h3>Links Rï¿½pidos</h3>
           <ul>
             <li><a href="#home"><i class="ri-pages-line"></i> Pagina Inicial</a></li>
             <li><a href="#Sobre"><i class="ri-rocket-fill"></i> Sobre Nos</a></li>
-            <li><a href="#Organiza��o"><i class="ri-home-heart-fill"></i> Organizacoes</a></li>
+            <li><a href="#Organizaï¿½ï¿½o"><i class="ri-home-heart-fill"></i> Organizacoes</a></li>
             <li><a href="#Noticia"><i class="ri-file-list-3-line"></i> Noticias</a></li>
           </ul>
         </div>

@@ -351,4 +351,55 @@ public class RocketDAO {
         }
     }
     
+    public Organizacao obterOrganizacaoPorEmail(String email){
+        connect();
+        try{
+            TypedQuery<Organizacao> q = manager.createQuery("SELECT o FROM Organizacao o WHERE o.usuarioEmail = :email", Organizacao.class);
+            q.setParameter("email", email);
+            return q.getSingleResult();
+        }catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    
+    public boolean verificarCadastroNoticia(Noticia noticia){
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(noticia);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().rollback();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
+    }
+    
+    public boolean cadastroNoticia(Noticia noticia){
+        connect();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(noticia);
+            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
+            manager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
+            return false;
+        }
+    }
+    
+
+    public Noticia noticiaFindId(Integer id) {
+        try {
+            connect();
+            Noticia noticia = manager.find(Noticia.class, id);
+            return noticia;
+        } catch (NoResultException e) {
+            return null; // Retorna null se não encontrar a notícia com o ID fornecido
+        }
+    }
+    
 }
