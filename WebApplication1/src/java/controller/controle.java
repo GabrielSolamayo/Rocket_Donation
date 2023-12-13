@@ -337,7 +337,7 @@ public class controle extends HttpServlet {
             String telefone = request.getParameter("telefone");
 
             Doador doador = new Doador(email, request.getParameter("nome"), request.getParameter("telefone"));
-
+            doador.setImagemUrl(request.getParameter("url"));
             String rua = request.getParameter("rua");
             Integer numero = Integer.valueOf(request.getParameter("numero"));
             String cep = request.getParameter("cep");
@@ -363,8 +363,9 @@ public class controle extends HttpServlet {
             disp.forward(request, response);
             
         } else if(flag.equalsIgnoreCase("publicarNot")){
+            
             String pkOrg = request.getParameter("email");
-            request.setAttribute("pkOrg", pkOrg);
+            request.setAttribute("pkOrga", pkOrg);
             RequestDispatcher disp = request.getRequestDispatcher("publicarNot.jsp");
             disp.forward(request, response);
         

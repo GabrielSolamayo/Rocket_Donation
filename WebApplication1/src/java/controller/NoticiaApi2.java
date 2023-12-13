@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,12 +54,16 @@ public class NoticiaApi2 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        Date dataAtual = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = formato.format(dataAtual);
+        
         List<Noticia> listaNoticias = new RocketDAO().listarNoticia();
 
         // Criar uma lista de objetos JSON para as organizações
         List<JsonObject> jsonOrgList = new ArrayList<>();
-
+        
         for (Noticia noticia : listaNoticias) {
             JsonObject orgJson = new JsonObject();
 
@@ -66,8 +72,8 @@ public class NoticiaApi2 extends HttpServlet {
             orgJson.addProperty("imagem", noticia.getImgUrl());
             orgJson.addProperty("titulo", noticia.getTitulo());
             orgJson.addProperty("descricao", noticia.getDescricao());
-            orgJson.addProperty("data", String.valueOf(noticia.getData()));
-
+            orgJson.addProperty("data", formato.format(noticia.getData()));
+            
             jsonOrgList.add(orgJson);
         }
 

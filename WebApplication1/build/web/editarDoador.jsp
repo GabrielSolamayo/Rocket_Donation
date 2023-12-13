@@ -25,7 +25,7 @@
 
                 <h2>Acesso</h2>
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" id="senha" placeholder="Senha"><br>
+                <input type="password" name="senha" id="senha" value="${doador.acesso.senha} placeholder="Senha"><br>
                 <label for="senha2">Confirme a Senha</label>
                 <input type="password" name="senha2" id="senha2" placeholder="Confirme a Senha"><br>
 
@@ -34,6 +34,9 @@
                 <input type="text" name="nome" id="nome" placeholder="Nome" value="${doador.nome}"><br>
                 <label for="telefone">Telefone</label>
                 <input type="text" name="telefone" id="telefone" placeholder="Telefone" value="${doador.telefone}" ><br>
+
+                <label for="url">Imagem</label>
+                <input type="text" name="url" id="url" value="${doador.imagemUrl}" ><br>
 
                 <h2>Endereço</h2>
                 <label for="rua">Rua</label>

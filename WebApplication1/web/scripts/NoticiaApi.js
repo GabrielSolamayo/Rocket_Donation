@@ -17,56 +17,63 @@ function formatDate(dateString) {
 
 function carregarNoticias() {
     fetch('http://localhost:8080/WebApplication1/NoticiaApi')
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error('Erro ao fazer a requisição');
-            }
-            return response.json();
-        })
-        .then(function (data) {
-            var noticiasContainer = document.querySelector('.slider.slider-2');
-            noticiasContainer.innerHTML = '';
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Erro ao fazer a requisição');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                var noticiasContainer = document.querySelector('.slider.slider-2');
+                noticiasContainer.innerHTML = '';
 
-            data.forEach(function (noticia) {
-                var card = document.createElement('div');
-                card.classList.add('card__news');
+                data.forEach(function (noticia) {
+                    var card = document.createElement('div');
+                    card.classList.add('card__news');
 
-                var imagem = document.createElement('img');
-                imagem.src = noticia.imagem;
-                imagem.alt = 'Foto do perfil da instituição';
+                    var imagem = document.createElement('img');
+                    imagem.src = noticia.imagem;
+                    imagem.alt = 'Foto do perfil da instituição';
 
-                var titulo = document.createElement('h2');
-                titulo.textContent = noticia.titulo;
+                    var titulo = document.createElement('h2');
+                    titulo.textContent = noticia.titulo;
 
-                var descricao = document.createElement('p');
-                descricao.textContent = noticia.descricao;
+                    var descricao = document.createElement('p');
+                    descricao.classList.add('descricao'); // Adicionando classe na descrição
+                    var descricaoText = noticia.descricao;
 
-                var dataNoticia = document.createElement('p');
-                dataNoticia.textContent = formatDate(noticia.data).toLocaleDateString(); // Formatando a data
+                    if (descricaoText.length > 150) {
+                        descricao.textContent = descricaoText.substring(0, 150) + '...';
+                    } else {
+                        descricao.textContent = descricaoText;
+                    }
 
-                var button = document.createElement('button');
-                button.classList.add('button__card');
+                    var dataNoticia = document.createElement('p');
+                    dataNoticia.textContent = 'Pub ' + noticia.data; // Formatando a data
 
-                var link = document.createElement('a');
-                link.href = '#';
-                link.innerHTML = '<i class="ri-book-read-fill"></i>Leia';
+                    var button = document.createElement('button');
+                    button.classList.add('button__card');
 
-                button.appendChild(link);
+                    var link = document.createElement('a');
+                    link.href = '#';
+                    link.innerHTML = '<i class="ri-book-read-fill"></i>Leia';
 
-                card.appendChild(imagem);
-                card.appendChild(titulo);
-                card.appendChild(descricao);
-                card.appendChild(dataNoticia); // Adicionando a data ao card
-                card.appendChild(button);
+                    button.appendChild(link);
 
-                noticiasContainer.appendChild(card);
+                    card.appendChild(imagem);
+                    card.appendChild(titulo);
+                    card.appendChild(descricao);
+                    card.appendChild(dataNoticia); // Adicionando a data ao card
+                    card.appendChild(button);
+
+                    noticiasContainer.appendChild(card);
+                });
+
+                initializeSlider(".slider-2", ".prev-button-2", ".next-button-2", ".card__news");
+            })
+            .catch(function (error) {
+                console.error('Erro ao fazer a requisição:', error);
             });
-
-            initializeSlider(".slider-2", ".prev-button-2", ".next-button-2", ".card__news");
-        })
-        .catch(function (error) {
-            console.error('Erro ao fazer a requisição:', error);
-        });
 }
 
 carregarNoticias();

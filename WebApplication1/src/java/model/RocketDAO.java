@@ -287,6 +287,7 @@ public class RocketDAO {
 
             doadorUpdate.setNome(doador.getNome());
             doadorUpdate.setTelefone(doador.getTelefone());
+            doadorUpdate.setImagemUrl(doador.getImagemUrl());
 
             enderecoUpdate.setRua(endereco.getRua());
             enderecoUpdate.setNumero(endereco.getNumero());
@@ -382,10 +383,9 @@ public class RocketDAO {
         try {
             manager.getTransaction().begin();
             manager.persist(noticia);
-            // Não comita a transação, apenas verifica se a persistência seria bem-sucedida
             manager.getTransaction().commit();
             return true;
-        } catch (Exception e) {
+        } catch (NoResultException e) {
             // Pode ser mais específico no tipo de exceção, dependendo da implementação do JPA
             return false;
         }
@@ -401,5 +401,7 @@ public class RocketDAO {
             return null; // Retorna null se não encontrar a notícia com o ID fornecido
         }
     }
+    
+    
     
 }

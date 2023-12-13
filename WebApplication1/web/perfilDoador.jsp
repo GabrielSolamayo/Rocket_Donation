@@ -22,12 +22,13 @@
         <div class="background">
             <div class="container-perfil-doador">
                 <div class="perfil">
-                    <h1>Nome</h1>
 
                     <div class="perfil-info">
-                        <img src="pictures/solidariedade.png" alt="Imagem de Perfil">
+                        <img src="${doador.imagemUrl}" alt="Imagem de Perfil">
                         <p></p>
+                        <h1 style="margin-bottom: 20px">${doador.nome}</h1>
                         <button class="editar-btn"><a href="historico.jsp"><i class="ri-edit-line"></i>Historico</a></button>
+                        <button class="editar-btn"><a href="controle?flag=editarDoador&email=${doador.email}"><i class="ri-edit-line"></i>Editar</a></button>
                         <p></p>
                     </div>
                 </div>
@@ -43,7 +44,6 @@
                             <p>Telefone: ${doador.telefone} </p>
                             <p>Endereço: ${endereco.rua},  n° ${endereco.numero} </p>
                             <p>Cep: ${endereco.cep}</p>
-                            <button class="editar-btn"><a href="controle?flag=editarDoador&email=${doador.email}"><i class="ri-edit-line"></i>Editar</a></button>
                         </div>
                     </div>
                 </div>

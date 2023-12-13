@@ -33,7 +33,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Noticia.findByTitulo", query = "SELECT n FROM Noticia n WHERE n.titulo = :titulo"),
     @NamedQuery(name = "Noticia.findByDescricao", query = "SELECT n FROM Noticia n WHERE n.descricao = :descricao"),
     @NamedQuery(name = "Noticia.findByData", query = "SELECT n FROM Noticia n WHERE n.data = :data"),
-    @NamedQuery(name = "Noticia.findByImgUrl", query = "SELECT n FROM Noticia n WHERE n.imgUrl = :imgUrl")})
+    @NamedQuery(name = "Noticia.findByImgUrl", query = "SELECT n FROM Noticia n WHERE n.imgUrl = :imgUrl"),
+    @NamedQuery(name = "Noticia.findByEmailOrganizacao", query = "SELECT n FROM Noticia n WHERE n.fkEmail.usuarioEmail = :email")
+})
 public class Noticia implements Serializable {
 
     private static final long serialVersionUID = 1L;
