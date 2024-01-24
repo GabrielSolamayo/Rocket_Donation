@@ -10,7 +10,7 @@ import model.Doacao;
 import model.Doador;
 import model.Noticia;
 
-@Generated(value="EclipseLink-2.7.12.v20230209-rNA", date="2023-12-13T03:19:39")
+@Generated(value="EclipseLink-2.7.12.v20230209-rNA", date="2023-12-13T14:48:21")
 @StaticMetamodel(Organizacao.class)
 public class Organizacao_ { 
 
